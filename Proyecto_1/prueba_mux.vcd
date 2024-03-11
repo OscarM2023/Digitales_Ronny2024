@@ -1,0 +1,161 @@
+$date
+	Sat Mar 09 17:06:13 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module mux_pam_tb $end
+$var wire 64 ! OUT [63:0] $end
+$var parameter 32 " Depth $end
+$var parameter 32 # Width $end
+$var reg 2 $ SEL [1:0] $end
+$scope module mux_dut $end
+$var wire 64 % OUT [63:0] $end
+$var wire 2 & SEL [1:0] $end
+$var wire 4 ' buffers_sel [3:0] $end
+$var parameter 32 ( Depth $end
+$var parameter 32 ) Width $end
+$scope begin genblk1[0] $end
+$var parameter 2 * i $end
+$scope module buffer $end
+$var wire 64 + INS_tri [63:0] $end
+$var wire 64 , OUTS_tri [63:0] $end
+$var wire 1 - SEL $end
+$var parameter 32 . width $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[1] $end
+$var parameter 2 / i $end
+$scope module buffer $end
+$var wire 64 0 INS_tri [63:0] $end
+$var wire 64 1 OUTS_tri [63:0] $end
+$var wire 1 2 SEL $end
+$var parameter 32 3 width $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 4 i $end
+$scope module buffer $end
+$var wire 64 5 INS_tri [63:0] $end
+$var wire 64 6 OUTS_tri [63:0] $end
+$var wire 1 7 SEL $end
+$var parameter 32 8 width $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[3] $end
+$var parameter 3 9 i $end
+$scope module buffer $end
+$var wire 64 : INS_tri [63:0] $end
+$var wire 64 ; OUTS_tri [63:0] $end
+$var wire 1 < SEL $end
+$var parameter 32 = width $end
+$upscope $end
+$upscope $end
+$scope module deco $end
+$var wire 2 > INS_deco [1:0] $end
+$var wire 4 ? OUTS_deco [3:0] $end
+$var parameter 32 @ depth $end
+$scope begin genblk1[0] $end
+$var parameter 2 A i $end
+$upscope $end
+$scope begin genblk1[1] $end
+$var parameter 2 B i $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 C i $end
+$upscope $end
+$scope begin genblk1[3] $end
+$var parameter 3 D i $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 D
+b10 C
+b1 B
+b0 A
+b100 @
+b1000000 =
+b11 9
+b1000000 8
+b10 4
+b1000000 3
+b1 /
+b1000000 .
+b0 *
+b1000000 )
+b100 (
+b1000000 #
+b100 "
+$end
+#0
+$dumpvars
+b1 ?
+b0 >
+0<
+b100101100 ;
+b100101001 :
+07
+b100101100 6
+b100101010 5
+02
+b100101100 1
+b100101011 0
+1-
+b100101100 ,
+b100101100 +
+b1 '
+b0 &
+b100101100 %
+b0 $
+b100101100 !
+$end
+#1000
+b100101011 !
+b100101011 %
+b100101011 ,
+b100101011 1
+b100101011 6
+b100101011 ;
+0-
+12
+b10 '
+b10 ?
+b1 $
+b1 &
+b1 >
+#2000
+b100101010 !
+b100101010 %
+b100101010 ,
+b100101010 1
+b100101010 6
+b100101010 ;
+02
+17
+b100 '
+b100 ?
+b10 $
+b10 &
+b10 >
+#3000
+b100101001 !
+b100101001 %
+b100101001 ,
+b100101001 1
+b100101001 6
+b100101001 ;
+07
+1<
+b1000 '
+b1000 ?
+b11 $
+b11 &
+b11 >
+#4000
