@@ -1,0 +1,40 @@
+$date
+	Mon Mar 11 16:54:32 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module adder_tb $end
+$var wire 32 ! Q [31:0] $end
+$var reg 32 " A [31:0] $end
+$var reg 32 # B [31:0] $end
+$scope module adder_test $end
+$var wire 32 $ A [31:0] $end
+$var wire 32 % B [31:0] $end
+$var wire 32 & Q [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1011010 &
+b111100 %
+b11110 $
+b111100 #
+b11110 "
+b1011010 !
+$end
+#1000
+b1000001 #
+b1000001 %
+b1000011 !
+b1000011 &
+b10 "
+b10 $
+#2000
