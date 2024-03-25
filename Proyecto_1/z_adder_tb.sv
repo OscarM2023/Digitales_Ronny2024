@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
-module adder_tb;
+`include "adder.sv"
+module z_adder_tb;
 
 reg [31:0] A,B;
 wire [31:0] Q;
@@ -8,7 +9,7 @@ adder adder_test(.A(A),.B(B),.Q(Q));
 initial begin
 
     $dumpfile("prueba_adder");
-    $dumpvars(0,adder_tb);
+    $dumpvars(0,z_adder_tb);
 
     A='d30;
     B='d60;

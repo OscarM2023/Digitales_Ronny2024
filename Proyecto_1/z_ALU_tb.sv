@@ -1,5 +1,6 @@
-`timescale 1ns / 1ps
-module ALU_tb;
+`timescale 1ns/1ps
+`include "ALU.sv"
+module z_ALU_tb;
 
   reg [31:0] A,B;
   reg [3:0] ALU_operation;
@@ -13,7 +14,7 @@ initial begin
 
     
 $dumpfile("prueba_ALU");
-$dumpvars(0,ALU_tb);
+$dumpvars(0,z_ALU_tb);
 
 A='d45;
 B='d67;

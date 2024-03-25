@@ -1,0 +1,5 @@
+module deco (
+    ports
+);
+    
+endmodule
