@@ -7,10 +7,9 @@ module inst_mem (
 integer i;
 always_ff @(posedge clk) begin
     if(!rst) begin  
-    for(i=1;i<32;i=i+1) begin
+    for(i=0;i<32;i=i+1) begin
         memory[i]<='b0;
     end
-        memory[0]<='hFFFFFFFF;
     end
 end
 
