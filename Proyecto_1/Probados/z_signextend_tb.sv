@@ -3,7 +3,7 @@
 module z_signextend_tb;
 
 reg [31:0] IN;
-wire [31:0] OUT;
+wire [63:0] OUT;
 
 signextend signo (.IN(IN),.OUT(OUT));
 

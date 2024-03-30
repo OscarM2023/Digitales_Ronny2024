@@ -1,7 +1,7 @@
 module mux21 (
     input wire SEL,
-    input wire [31:0] IN0,IN1,
-    output reg [31:0] OUT
+    input wire [63:0] IN0,IN1,
+    output reg [63:0] OUT
 );
 
 always_comb begin 

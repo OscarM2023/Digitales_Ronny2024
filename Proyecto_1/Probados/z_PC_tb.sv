@@ -2,9 +2,9 @@
 `include "PC.sv"
 module z_PC_tb;
 
-wire clk=0,rst=0;
-wire [31:0]  IN;
-wire [31:0] OUT;
+reg clk=0,rst=0;
+reg [63:0]  IN;
+wire [63:0] OUT;
 
 PC PC_test (.clk(clk),.rst(rst),.IN(IN),.OUT(OUT));
 
@@ -15,9 +15,9 @@ $dumpfile("prueba_PC.vcd");
 $dumpvars(0,z_PC_tb);
 
 #5
-rst<='b1;
+rst<=1'b1;
 #3
-IN='hFFFFFFFF;
+IN={64{1'b1}};
 #10
 
     $finish;

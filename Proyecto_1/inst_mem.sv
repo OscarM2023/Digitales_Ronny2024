@@ -1,20 +1,24 @@
 module inst_mem (
     input wire clk,rst,
-    input wire [31:0] read_adr,
-    output wire [31:0] instruction
+    input wire [63:0] read_adr,
+    output reg [31:0] instruction
 );
- reg [31:0] memory [31:0]; //el primer valor es width, el segundo depth
+ reg [7:0] memory [63:0]; //el primer valor es width, el segundo depth
 integer i;
 always_ff @(posedge clk) begin
     if(!rst) begin  
-    for(i=0;i<32;i=i+1) begin
-        memory[i]<='b0;
+    for(i=0;i<64;i=i+1) begin
+        memory[i]<=8'h00;
     end
     end
 end
 
-assign instruction=memory[read_adr];
-
-
+always @(*) begin instruction=
+        {
+         memory[read_adr+64'd3],
+         memory[read_adr+64'd2],
+         memory[read_adr+64'd1],
+         memory[read_adr]};
+end
 
 endmodule
