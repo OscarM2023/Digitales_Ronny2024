@@ -13,15 +13,65 @@ module control (
 localparam [6:0] beq_op = 7'b1100011;
 localparam [6:0] arit_op = 7'b0110011;
 localparam [6:0] sw_op = 7'b0100011;
+localparam [6:0] lw_op = 7'b0000011;
 
 reg [2:0] func3;
 
+assign func3 = {instruction[9], instruction[8], instruction[7]};
+
 always_comb begin
-    case ({instruction})
+    case (instruction)
         beq_op: begin
-            
-        end 
-        default:
+            if(!z) begin
+                {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
+                 ALUOp = 4'b0110;
+            end
+            else begin
+                {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b10010;
+                 ALUOp = 4'b0110;
+            end
+        end
+        sw_op: begin
+            {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00110;
+             ALUOp = 4'b0010;
+        end
+        lw_op: begin
+            {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+             ALUOp = 4'b0010;
+        end
+        arit_op: begin
+            case (func3)
+                3'b000: begin
+                    if(instruction[10]) begin
+                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                         ALUOp = 4'b0110;
+                    end
+                    else begin
+                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                         ALUOp = 4'b0010;
+                    end
+                end
+
+                3'b111: begin
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                     ALUOp = 4'b0000;
+                end
+
+                3'b110: begin
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                     ALUOp = 4'b0001;
+                end
+
+                default: begin
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
+                    ALUOp = 4'b0010;
+                end
+            endcase 
+        end
+        default: begin
+            {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
+             ALUOp = 4'b0010;
+        end
     endcase
 end
 
