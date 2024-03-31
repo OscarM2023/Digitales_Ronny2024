@@ -13,6 +13,7 @@ reg zero = 0;
 
 
  control control_prueba   ( .instruction(instruction),
+                            .zero(zero),
                             .Branch(Branch),
                             .MemtoReg(MemtoReg),
                             .MemWrite(MemWrite),
