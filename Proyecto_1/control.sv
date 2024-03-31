@@ -22,10 +22,10 @@ reg [2:0] func3;
 
 assign func3 = {instruction[9], instruction[8], instruction[7]};
 
-always_comb begin
+always @(*) begin
     case (instruction)
         beq_op: begin
-            if(!z) begin
+            if(!zero) begin
                 {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
                  ALUOp = 4'b0110;
             end

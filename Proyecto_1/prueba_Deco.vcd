@@ -1,0 +1,99 @@
+$date
+	Sun Mar 31 00:27:19 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module z_control_tb $end
+$var wire 1 ! RegWrite $end
+$var wire 1 " MemtoReg $end
+$var wire 1 # MemWrite $end
+$var wire 1 $ Branch $end
+$var wire 1 % ALUSrc $end
+$var wire 4 & ALUOp [3:0] $end
+$var reg 11 ' instruction [10:0] $end
+$var reg 1 ( zero $end
+$scope module control_prueba $end
+$var wire 11 ) instruction [10:0] $end
+$var wire 1 * zero $end
+$var wire 3 + func3 [2:0] $end
+$var parameter 7 , arit_op $end
+$var parameter 7 - beq_op $end
+$var parameter 7 . lw_op $end
+$var parameter 7 / sw_op $end
+$var reg 4 0 ALUOp [3:0] $end
+$var reg 1 % ALUSrc $end
+$var reg 1 $ Branch $end
+$var reg 1 # MemWrite $end
+$var reg 1 " MemtoReg $end
+$var reg 1 ! RegWrite $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100011 /
+b11 .
+b1100011 -
+b110011 ,
+$end
+#0
+$dumpvars
+b10 0
+b0 +
+z*
+b0 )
+0(
+b0 '
+b10 &
+1%
+0$
+0#
+0"
+0!
+$end
+#10000
+1"
+1!
+b11 '
+b11 )
+#20000
+0"
+1#
+0!
+b100011 '
+b100011 )
+#30000
+1"
+0#
+1!
+b110011 '
+b110011 )
+#40000
+0"
+0!
+b100 +
+b1000110011 '
+b1000110011 )
+#50000
+b111 +
+b1110110011 '
+b1110110011 )
+#60000
+b110 +
+b1100110011 '
+b1100110011 )
+#70000
+b0 +
+b10001100011 '
+b10001100011 )
+#80000
+b110 &
+b110 0
+1$
+b1100011 '
+b1100011 )
+#90000
