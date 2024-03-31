@@ -1,0 +1,43 @@
+`include "ALU.sv" //
+`include "data_mem.sv"
+`include "inst_mem.sv"
+`include "mux21.sv" //mux 3
+`include "PC.sv"
+`include "register.sv"
+`include "signextend.sv"
+
+module  (
+    input wire RST,
+    input wire CLK
+);
+
+wire [63:0] mux2toPC,add1tomux2,mux2toPC,PCtoInst_mem,mux1toALU,regtoALU,ALUtodata_mem,regtodata_mem;
+wire [63:0] data_memtomux3,mux3toreg,regtomux1,immgentomux1,PCtoadder1
+wire [3:0] decotoALU;
+wire zerotodeco,decotodatamem,decotomux3,decotomux1,decotoreg;
+wire [31:0] instruction;
+
+ALU ALU_mono(.A(regtoALU),.B(mux1toALU),.ALU_operation(decotoALU),.ALU_result(ALUtodata_mem),.zero(zerotodeco));
+
+data_mem data_mono(.clk(CLK),.rst(RST),.wrt_en(decotodatamem),.address(ALUtodata_mem),.write_data(regtodata_mem),.read_data(data_memtomux3));
+
+mux21 mux3(.SEL(decotomux3),.IN0(regtodata_mem),.IN1(data_memtomux3),.OUT(mux3toreg));
+
+mux21 mux1(.SEL(decotomux1),.IN0(regtomux1),.IN1(immgentomux1),.OUT(mux1toALU));
+
+signextend signextend_mono(.IN(instruction),.OUT(immgentomux1));
+
+register register_mono(.rst(RST),.clk(CLK),.regwrite(decotoreg),.adr_reg1(instruction[19:15]),.adr_reg2(instruction[24:20]),.adr_wr_reg(instruction[11:7]),
+.wr_data(mux3toreg),.reg_data1(regtoALU),.reg_data2(regtomux1));
+
+inst_mem inst_mem_mono(.clk(CLK),.rst(RST),.read_adr(PCtoInst_mem),.instruction(instruction));
+
+PC PC_mono(.clk(CLK),.rst(RST),.IN(mux2toPC),.OUT(PCtoInst_mem));
+
+adder adder1(.A(PCtoInst_mem),.B(),.Q());
+
+
+
+
+
+endmodule
