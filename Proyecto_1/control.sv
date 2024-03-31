@@ -8,9 +8,6 @@ module control (
 
    output reg Branch,MemtoReg,MemWrite,ALUSrc,RegWrite, //Branch va directo al mux21 de arriba
    output reg [3:0] ALUOp
-                          
-
-
 );
 
 localparam [6:0] beq_op = 7'b1100011;
@@ -23,7 +20,7 @@ reg [2:0] func3;
 assign func3 = {instruction[9], instruction[8], instruction[7]};
 
 always @(*) begin
-    case (instruction)
+    case (instruction[6:0])
         beq_op: begin
             if(!zero) begin
                 {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
@@ -46,30 +43,30 @@ always @(*) begin
             case (func3)
                 3'b000: begin
                     if(instruction[10]) begin
-                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01001;
                          ALUOp = 4'b0110;
                     end
                     else begin
-                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                        {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01001;
                          ALUOp = 4'b0010;
                     end
                 end
 
                 3'b111: begin
-                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01001;
                      ALUOp = 4'b0000;
                 end
 
                 3'b110: begin
-                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01011;
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b01001;
                      ALUOp = 4'b0001;
                 end
 
                 default: begin
-                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
+                    {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00000;
                     ALUOp = 4'b0010;
                 end
-            endcase 
+            endcase
         end
         default: begin
             {Branch, MemtoReg, MemWrite, ALUSrc, RegWrite} = 5'b00010;
@@ -78,5 +75,5 @@ always @(*) begin
     endcase
 end
 
-    
+
 endmodule
