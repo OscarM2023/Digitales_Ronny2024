@@ -12,7 +12,6 @@ module register (
     output wire [63:0] reg_data1, //salidas de registros.
     output wire [63:0] reg_data2
 );
-
 reg [7:0] registers [63:0];
 integer i;
 always_ff @(posedge clk) begin
@@ -30,9 +29,12 @@ always_ff @(posedge clk) begin
      end
 
     if(!rst) begin  
-    for(i=0;i<64;i=i+1) begin
+    for(i=24;i<64;i=i+1) begin
         registers[i]<=8'h00;
     end
+    {registers[7],registers[6],registers[5],registers[4],registers[3],registers[2],registers[1],registers[0]}<=64'd33;
+    {registers[15],registers[14],registers[13],registers[12],registers[11],registers[10],registers[9],registers[8]}<=64'd22;
+    {registers[23],registers[22],registers[21],registers[20],registers[19],registers[18],registers[17],registers[16]}<=64'd11;
     end
 end
 
