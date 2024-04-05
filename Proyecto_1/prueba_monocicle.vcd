@@ -1,5 +1,5 @@
 $date
-	Sun Mar 31 21:33:07 2024
+	Fri Apr 05 15:21:39 2024
 $end
 $version
 	Icarus Verilog
@@ -127,6 +127,8 @@ $upscope $end
 $upscope $end
 $scope begin $ivl_for_loop0 $end
 $var integer 32 b i [31:0] $end
+$upscope $end
+$scope task mostrar_reg $end
 $upscope $end
 $upscope $end
 $enddefinitions $end

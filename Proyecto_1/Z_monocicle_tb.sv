@@ -38,6 +38,7 @@ $display("----------------");
 
 for(integer i=0;i<5;i=i+1) begin
 #2
+mostrar_reg(0);
 $display("PC:",monocicle_prueba.PC_mono.OUT);
 $display("Registers[0](d): %d",{monocicle_prueba.register_mono.registers[7],monocicle_prueba.register_mono.registers[6],monocicle_prueba.register_mono.registers[5],monocicle_prueba.register_mono.registers[4],monocicle_prueba.register_mono.registers[3],monocicle_prueba.register_mono.registers[2],monocicle_prueba.register_mono.registers[1],monocicle_prueba.register_mono.registers[0]});
 $display("Registers[8](d): %d",{monocicle_prueba.register_mono.registers[15],monocicle_prueba.register_mono.registers[14],monocicle_prueba.register_mono.registers[13],monocicle_prueba.register_mono.registers[12],monocicle_prueba.register_mono.registers[11],monocicle_prueba.register_mono.registers[10],monocicle_prueba.register_mono.registers[9],monocicle_prueba.register_mono.registers[8]});
@@ -47,7 +48,15 @@ end
 
 $finish;
 end
-    
-    
+
+
+task automatic mostrar_reg (input integer i); //funcion para mostrar un registro
+  $display("Register[%d]: |%b|%b|%b|%b|",i,monocicle_prueba.inst_mono.memory[i+3],monocicle_prueba.inst_mono.memory[i+2],monocicle_prueba.inst_mono.memory[i+1],monocicle_prueba.inst_mono.memory[i]);
+endtask 
+
+
+
+
+
 endmodule
 
