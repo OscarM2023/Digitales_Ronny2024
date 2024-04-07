@@ -36,11 +36,11 @@ signextend signextend_mono(.IN(instruction),.OUT(immgentomux1));
 register register_mono(.rst(RST),.clk(CLK),.regwrite(decotoreg),.adr_reg1(instruction[19:15]),.adr_reg2(instruction[24:20]),.adr_wr_reg(instruction[11:7]),
 .wr_data(mux3toreg),.reg_data1(regtoALU),.reg_data2(regtomux1));
 
-inst_mem inst_mono(.clk(CLK),.rst(RST),.read_adr(PCtoInst_mem),.instruction(instruction));
+inst_mem #(32,80,64) inst_mono(.clk(CLK),.rst(RST),.read_adr(PCtoInst_mem),.instruction(instruction));
 
 PC PC_mono(.clk(CLK),.rst(RST),.IN(mux2toPC),.OUT(PCtoInst_mem));
 
-adder adder1(.A(PCtoInst_mem),.B(64'd4),.Q(adder1tomux2));
+adder adder1(.A(PCtoInst_mem),.B(64'd1),.Q(adder1tomux2));
 
 adder adder2(.A(PCtoInst_mem),.B(immgentomux1),.Q(adder2tomux2));
 
