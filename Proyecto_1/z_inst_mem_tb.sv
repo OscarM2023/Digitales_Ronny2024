@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 `include "inst_mem.sv"
-module z_inst_mem_tb #(parameter  width=32,depth=80,adr_in=64,registers_shown=10); //mostrar cierta cantidad de registros para verificar su funcionamiento
+module z_inst_mem_tb #(parameter  width=32,depth=80,adr_in=64,mem_shown=10); //mostrar cierta cantidad de registros para verificar su funcionamiento
 
 reg clk,rst;
 reg [adr_in-1:0] read_adr;
@@ -18,12 +18,12 @@ rst<=1'b0; //reiniciar el sistema
 read_adr={adr_in{1'b0}};
 #5
 rst<=1'b1;
-
-for(integer a=0;a<registers_shown;a=a+1) begin //inicializar la memoria con valores crecientes
-    $force(memory_test.memory[a],a);
+#10
+for(integer a=0;a<mem_shown;a=a+1) begin //inicializar la memoria con valores crecientes
+    memory_test.memory[a]=a;
 end
 
-for(integer i=0;i<registers_shown;i=i+1) begin //mostrar contenidos de memoria
+for(integer i=0;i<mem_shown;i=i+1) begin //mostrar contenidos de memoria
     read_adr=i;
     #5;
 end

@@ -33,7 +33,7 @@ mux21 mux1(.SEL(decotomux1),.IN0(regtomux1),.IN1(immgentomux1),.OUT(mux1toALU));
 
 signextend signextend_mono(.IN(instruction),.OUT(immgentomux1));
 
-register register_mono(.rst(RST),.clk(CLK),.regwrite(decotoreg),.adr_reg1(instruction[19:15]),.adr_reg2(instruction[24:20]),.adr_wr_reg(instruction[11:7]),
+register #(64,32) register_mono(.rst(RST),.clk(CLK),.regwrite(decotoreg),.adr_reg1(instruction[19:15]),.adr_reg2(instruction[24:20]),.adr_wr_reg(instruction[11:7]),
 .wr_data(mux3toreg),.reg_data1(regtoALU),.reg_data2(regtomux1));
 
 inst_mem #(32,80,64) inst_mono(.clk(CLK),.rst(RST),.read_adr(PCtoInst_mem),.instruction(instruction));

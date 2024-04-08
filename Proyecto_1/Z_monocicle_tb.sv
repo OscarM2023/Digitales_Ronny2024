@@ -11,50 +11,55 @@ module z_monocicle_tb;
 initial begin
 
 $dumpfile("prueba_monocicle");
-$dumpvars(-2,z_monocicle_tb);
+$dumpvars(0,z_monocicle_tb);
+
+
 
 CLK=1'b0; //Inicializar el clock en bajo
 RST<=1'b0;
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-$display("Instmem[0]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[3],monocicle_prueba.inst_mono.memory[2],monocicle_prueba.inst_mono.memory[1],monocicle_prueba.inst_mono.memory[0]);
-$display("Instmem[4]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[7],monocicle_prueba.inst_mono.memory[6],monocicle_prueba.inst_mono.memory[5],monocicle_prueba.inst_mono.memory[4]);
-$display("Instmem[8]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[11],monocicle_prueba.inst_mono.memory[10],monocicle_prueba.inst_mono.memory[9],monocicle_prueba.inst_mono.memory[8]);
-$display("Instmem[12]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[15],monocicle_prueba.inst_mono.memory[14],monocicle_prueba.inst_mono.memory[13],monocicle_prueba.inst_mono.memory[12]);
+mostrar_inst_mem(32);
+mostrar_regs(5);
+mostrar_data_mem(1);
 #1
 RST<=1'b1;
 #1
+$readmemh("data_initial", monocicle_prueba.data_mono.memory,0,39);
 $display("\nACTIVACION DE RESET\n");
-//Acá ya se programó la memoria
 $display("----------------");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-$display("Instmem[0]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[3],monocicle_prueba.inst_mono.memory[2],monocicle_prueba.inst_mono.memory[1],monocicle_prueba.inst_mono.memory[0]);
-$display("Instmem[4]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[7],monocicle_prueba.inst_mono.memory[6],monocicle_prueba.inst_mono.memory[5],monocicle_prueba.inst_mono.memory[4]);
-$display("Instmem[8]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[11],monocicle_prueba.inst_mono.memory[10],monocicle_prueba.inst_mono.memory[9],monocicle_prueba.inst_mono.memory[8]);
-$display("Instmem[12]: |%b|%b|%b|%b|",monocicle_prueba.inst_mono.memory[15],monocicle_prueba.inst_mono.memory[14],monocicle_prueba.inst_mono.memory[13],monocicle_prueba.inst_mono.memory[12]);
-$display("Registers[0](d): %d",{monocicle_prueba.register_mono.registers[7],monocicle_prueba.register_mono.registers[6],monocicle_prueba.register_mono.registers[5],monocicle_prueba.register_mono.registers[4],monocicle_prueba.register_mono.registers[3],monocicle_prueba.register_mono.registers[2],monocicle_prueba.register_mono.registers[1],monocicle_prueba.register_mono.registers[0]});
-$display("Registers[8](d): %d",{monocicle_prueba.register_mono.registers[15],monocicle_prueba.register_mono.registers[14],monocicle_prueba.register_mono.registers[13],monocicle_prueba.register_mono.registers[12],monocicle_prueba.register_mono.registers[11],monocicle_prueba.register_mono.registers[10],monocicle_prueba.register_mono.registers[9],monocicle_prueba.register_mono.registers[8]});
-$display("Registers[16](d): %d",{monocicle_prueba.register_mono.registers[23],monocicle_prueba.register_mono.registers[22],monocicle_prueba.register_mono.registers[21],monocicle_prueba.register_mono.registers[20],monocicle_prueba.register_mono.registers[19],monocicle_prueba.register_mono.registers[18],monocicle_prueba.register_mono.registers[17],monocicle_prueba.register_mono.registers[16]});
+mostrar_inst_mem(32);
+mostrar_regs(5);
+mostrar_data_mem(5);
 $display("----------------");
 
 for(integer i=0;i<5;i=i+1) begin
 #2
-mostrar_reg(0);
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-$display("Registers[0](d): %d",{monocicle_prueba.register_mono.registers[7],monocicle_prueba.register_mono.registers[6],monocicle_prueba.register_mono.registers[5],monocicle_prueba.register_mono.registers[4],monocicle_prueba.register_mono.registers[3],monocicle_prueba.register_mono.registers[2],monocicle_prueba.register_mono.registers[1],monocicle_prueba.register_mono.registers[0]});
-$display("Registers[8](d): %d",{monocicle_prueba.register_mono.registers[15],monocicle_prueba.register_mono.registers[14],monocicle_prueba.register_mono.registers[13],monocicle_prueba.register_mono.registers[12],monocicle_prueba.register_mono.registers[11],monocicle_prueba.register_mono.registers[10],monocicle_prueba.register_mono.registers[9],monocicle_prueba.register_mono.registers[8]});
-$display("Registers[16](d): %d",{monocicle_prueba.register_mono.registers[23],monocicle_prueba.register_mono.registers[22],monocicle_prueba.register_mono.registers[21],monocicle_prueba.register_mono.registers[20],monocicle_prueba.register_mono.registers[19],monocicle_prueba.register_mono.registers[18],monocicle_prueba.register_mono.registers[17],monocicle_prueba.register_mono.registers[16]});
 end
-
-
 $finish;
 end
 
 
-task automatic mostrar_reg (input integer i); //funcion para mostrar un registro
-  $display("Register[%d]: |%b|%b|%b|%b|",i,monocicle_prueba.inst_mono.memory[i+3],monocicle_prueba.inst_mono.memory[i+2],monocicle_prueba.inst_mono.memory[i+1],monocicle_prueba.inst_mono.memory[i]);
+task automatic mostrar_inst_mem(input integer b); //funcion para mostrar "b" direcciones de mem instr
+  for(integer a=0;a<b;a=a+1) begin
+  $display("Inst_Mem[%d]:|%b|",a,monocicle_prueba.inst_mono.memory[a]);
+  end
+endtask 
+
+task automatic mostrar_regs(input integer b); //funcion para mostrar "b" registros
+  for(integer a=0;a<b;a=a+1) begin
+  $display("Reg[%d]:|%b|",a,monocicle_prueba.register_mono.registers[a]);
+  end
 endtask 
 
 
+task automatic mostrar_data_mem(input integer b); //funcion para mostrar "b" direcciones de mem data
+  for(integer a=0;a<(2**b)+1;a=a+8) begin
+  $display("Data_Mem[%d]:(h)|%h|(d)|%d|",a,{monocicle_prueba.data_mono.memory[a+7],monocicle_prueba.data_mono.memory[a+6],monocicle_prueba.data_mono.memory[a+5],monocicle_prueba.data_mono.memory[a+4],monocicle_prueba.data_mono.memory[a+3],monocicle_prueba.data_mono.memory[a+2],monocicle_prueba.data_mono.memory[a+1],monocicle_prueba.data_mono.memory[a]}
+  ,{monocicle_prueba.data_mono.memory[a+7],monocicle_prueba.data_mono.memory[a+6],monocicle_prueba.data_mono.memory[a+5],monocicle_prueba.data_mono.memory[a+4],monocicle_prueba.data_mono.memory[a+3],monocicle_prueba.data_mono.memory[a+2],monocicle_prueba.data_mono.memory[a+1],monocicle_prueba.data_mono.memory[a]});
+  end
+endtask 
 
 
 
