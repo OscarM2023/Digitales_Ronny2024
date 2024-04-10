@@ -25,6 +25,8 @@ mostrar_data_mem(1);
 RST<=1'b1;
 #1
 $readmemh("data_initial", monocicle_prueba.data_mono.memory,0,39);
+$readmemb("inst_initial", monocicle_prueba.inst_mono.memory);
+
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
@@ -35,7 +37,11 @@ $display("----------------");
 
 for(integer i=0;i<5;i=i+1) begin
 #2
+$display("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
+mostrar_regs(5);
+mostrar_data_mem(5);
+
 end
 $finish;
 end
@@ -49,7 +55,7 @@ endtask
 
 task automatic mostrar_regs(input integer b); //funcion para mostrar "b" registros
   for(integer a=0;a<b;a=a+1) begin
-  $display("Reg[%d]:|%b|",a,monocicle_prueba.register_mono.registers[a]);
+  $display("Reg[%d]:(h)|%h|(d)|%d|",a,monocicle_prueba.register_mono.registers[a],monocicle_prueba.register_mono.registers[a]);
   end
 endtask 
 
@@ -60,8 +66,6 @@ task automatic mostrar_data_mem(input integer b); //funcion para mostrar "b" dir
   ,{monocicle_prueba.data_mono.memory[a+7],monocicle_prueba.data_mono.memory[a+6],monocicle_prueba.data_mono.memory[a+5],monocicle_prueba.data_mono.memory[a+4],monocicle_prueba.data_mono.memory[a+3],monocicle_prueba.data_mono.memory[a+2],monocicle_prueba.data_mono.memory[a+1],monocicle_prueba.data_mono.memory[a]});
   end
 endtask 
-
-
 
 endmodule
 
