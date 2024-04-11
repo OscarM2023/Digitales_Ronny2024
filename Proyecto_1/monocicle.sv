@@ -40,9 +40,9 @@ inst_mem #(32,80,64) inst_mono(.clk(CLK),.rst(RST),.read_adr(PCtoInst_mem),.inst
 
 PC PC_mono(.clk(CLK),.rst(RST),.IN(mux2toPC),.OUT(PCtoInst_mem));
 
-adder adder1(.A(PCtoInst_mem),.B(64'd1),.Q(adder1tomux2));
+adder adder1(.A(PCtoInst_mem),.B(64'd4),.Q(adder1tomux2));
 
-adder adder2(.A(PCtoInst_mem),.B(immgentomux1),.Q(adder2tomux2));
+adder adder2(.A({{2{1'b1}},PCtoInst_mem[63:2]}),.B(immgentomux1),.Q(adder2tomux2));
 
 control control_mono(.instruction({instruction[30],instruction[14:12],instruction[6:0]}),.Branch(decotoAND),
 .MemtoReg(decotomux3),.MemWrite(decotodatamem),.ALUSrc(decotomux1),.RegWrite(decotoreg),.ALUOp(decotoALU));
