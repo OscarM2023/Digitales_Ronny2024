@@ -17,8 +17,15 @@ $dumpvars(0,z_PC_tb);
 #5
 rst<=1'b1;
 #3
-IN={64{1'b1}};
+IN={64'hFFFFFFFFAAAAAAAA);
 #10
+IN={64'hAAAAAAAAFFFFFFFF};
+#10
+IN={64{1'b0}};
+#10
+IN={64'hAAAAAAAABBBBBBBB};
+#10
+
 
     $finish;
 end

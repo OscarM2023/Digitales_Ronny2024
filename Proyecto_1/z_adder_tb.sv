@@ -11,12 +11,11 @@ initial begin
     $dumpfile("prueba_adder");
     $dumpvars(0,z_adder_tb);
 
-    A=64'd30;
-    B=64'd60;
-    #1
-    A=64'd2;
-    B=64'd65;
-    #1
+    for(integer i=0;i<4;i=i+1) begin
+    A=$random;
+    B=$random;
+    #1;
+    end
 
     $finish;
 end
