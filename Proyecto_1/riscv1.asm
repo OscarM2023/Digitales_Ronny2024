@@ -1,75 +1,58 @@
-inicio:
-lw t0, 32(x0)
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-add t1, x0, t0
-add t2, t1, t0
-add t0, t1, t2
-sw t0, 40(x0) # cargar 0x10
-lw t1, 32(x0)
-lw t2, 48(x0) # cargar 0x10 decimal
-sub t2, t0, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-sub t2, t2, t1
-and t3, t0, t2
-beq t3, t2, inicio
-or t2, t2, t1
-beq t3, t2, inicio
-sw t2, 40(x0)
-beq x0, x0 inicio
+
+inicio:	lw x5, 32(x0)
+	add x1, x0, x5
+	add x2, x1, x5
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	add x1, x2, x1
+	add x2, x1, x2
+	sw x2, 48(x0) # store fib number at address 0+40
+	lw x1, 32(x0) # load decimal 1 into x1
+	lw x3, 40(x0) # load hex 0x10 into x3
+	lw x5, 16(x0) # load decimal 300 into x5
+	sub x2, x2, x1
+	and x4, x3, x2
+	or x3, x3, x5
+	sw x2, 40(x0)
+	beq x0, x0 inicio
 
 
 

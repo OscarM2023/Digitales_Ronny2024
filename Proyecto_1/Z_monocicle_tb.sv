@@ -18,19 +18,19 @@ $dumpvars(0,z_monocicle_tb);
 CLK=1'b0; //Inicializar el clock en bajo
 RST<=1'b0;
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-mostrar_inst_mem(32);
+mostrar_inst_mem(6);
 mostrar_regs(5);
 mostrar_data_mem(1);
 #1
 RST<=1'b1;
 #1
-$readmemh("data_initial", monocicle_prueba.data_mono.memory,0,39);
+$readmemh("data_initial", monocicle_prueba.data_mono.memory);
 $readmemb("inst_initial", monocicle_prueba.inst_mono.memory);
 
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-mostrar_inst_mem(32);
+mostrar_inst_mem(6);
 mostrar_regs(5);
 mostrar_data_mem(5);
 $display("----------------");
@@ -39,8 +39,8 @@ for(integer i=0;i<72;i=i+1) begin
 #2
 $display("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
-mostrar_regs(5);
-mostrar_data_mem(5);
+mostrar_regs(6);
+mostrar_data_mem(6);
 
 end
 $finish;
