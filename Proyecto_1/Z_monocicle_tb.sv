@@ -35,7 +35,7 @@ mostrar_regs(5);
 mostrar_data_mem(5);
 $display("----------------");
 
-for(integer i=0;i<72;i=i+1) begin
+for(integer i=0;i<300;i=i+1) begin
 #2
 $display("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 $display("PC:",monocicle_prueba.PC_mono.OUT);
