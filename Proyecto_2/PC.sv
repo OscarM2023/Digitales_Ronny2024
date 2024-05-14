@@ -1,4 +1,4 @@
-module PC #(parameter WIDTH=32)(
+module pc #(parameter WIDTH=32)(
     input wire clk,rst,
     input wire STALL,
     input wire [WIDTH-1:0]  IN,
@@ -6,13 +6,12 @@ module PC #(parameter WIDTH=32)(
 );
 
 always_ff @(posedge clk) begin
-if(!rst) begin
-    OUT<={WIDTH{1'b0}};
-end
+
+if(!rst) OUT<={WIDTH{1'b0}};
 else begin
-    if(!STALL)
-    OUT<=IN;
+if(!STALL) OUT<=IN;
 end
+
 end
     
 endmodule
