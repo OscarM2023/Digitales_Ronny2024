@@ -1,5 +1,5 @@
 module pc #(parameter WIDTH=32)(
-    input wire clk,rst,
+    input wire clk, rst,
     input wire STALL,
     input wire [WIDTH-1:0]  IN,
     output reg [WIDTH-1:0] OUT
