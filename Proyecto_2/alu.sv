@@ -2,7 +2,7 @@ module alu #(parameter WIDTH=32)(
     input wire [WIDTH-1:0] A,B,
     input wire [3:0] ALU_OPERATION,
 
-    output reg [WIDTH-1:0] ALU_RESULT,
+    output reg [WIDTH-1:0] ALU_RESULT
 );
     
 /*
