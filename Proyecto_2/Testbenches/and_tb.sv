@@ -5,8 +5,9 @@ module and_tb (
 );
     reg A, B;
     wire Q;
-
-and and_tb(
+    
+    
+and1 and_tb(
     .A(A),
     .B(B),
     .Q(Q)
@@ -14,7 +15,7 @@ and and_tb(
 
 
 initial begin
-    $dumpfile("and_tb.vdc");
+    $dumpfile("and_tb.vcd");
     $dumpvars(0,and_tb);
 
     A = 0;

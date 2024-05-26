@@ -1,0 +1,32 @@
+$date
+	Fri May 24 15:44:14 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module and_tb $end
+$scope module and_tb $end
+$var wire 1 ! A $end
+$var wire 1 " B $end
+$var wire 1 # Q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0#
+0"
+0!
+$end
+#10
+1!
+#20
+1"
+0!
+#30
+1#
+1!
+#40

@@ -1,4 +1,4 @@
-module and (
+module and1 (
     input wire A,
     input wire B,
     output wire Q

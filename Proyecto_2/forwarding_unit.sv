@@ -12,26 +12,42 @@ always_comb begin
         REGWRITE_EX_MEM
         && (ARD_EX_MEM != 0)
         && (ARD_EX_MEM == ARS1)
-    ) FORWARD_A = 2'b10;
+    ) 
+    begin
+        FORWARD_A = 2'b10;
+    end  
+    
     else if (
         REGWRITE_EX_MEM
         && (ARD_EX_MEM != 0)
         && (ARD_EX_MEM  == ARS2)
-    ) FORWARD_B = 2'b10;
+    ) 
+    begin
+        FORWARD_B = 2'b10;
+    end
+    
     else if (
         ARD_MEM_WB
         && (ARD_MEM_WB != 0)
         && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
         && (ARD_EX_MEM == ARS1)
         && (ARD_MEM_WB == ARS1)
-    ) FORWARD_A = 2'b01;
+    ) 
+    begin
+        FORWARD_A = 2'b01;
+    end
+    
     else if (
         ARD_MEM_WB
         && (ARD_MEM_WB != 0)
         && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
         && (ARD_EX_MEM == ARS2)
         && (ARD_MEM_WB == ARS2)
-    ) FORWARD_A = 2'b01;
+    ) 
+    begin
+        FORWARD_B = 2'b01;
+    end
+    
 
 end
 
