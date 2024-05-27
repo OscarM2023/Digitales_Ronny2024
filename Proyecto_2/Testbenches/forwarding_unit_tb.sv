@@ -4,13 +4,18 @@
 module forwarding_unit_tb (
 );
 
-    reg [4:0] ard_ex_mem, ard_mem_wb, ars1, ars2;
-    reg regwrite_ex_mem, regwrite_mem_wb;
-    wire [1:0] forward_a, forward_b;
+    reg [4:0] ard_ex_mem;
+    reg [4:0] ard_mem_wb; 
+    reg [4:0] ars1;
+    reg [4:0] ars2;
+    reg regwrite_ex_mem;
+    reg regwrite_mem_wb;
+    wire [1:0] forward_a;
+    wire [1:0] forward_b;
 
 
 
-forwarding_unit forwarding_unit_tb (
+forwarding_unit dut (
 
     .ARD_EX_MEM(ard_ex_mem),
     .ARD_MEM_WB(ard_mem_wb),

@@ -1,5 +1,5 @@
 $date
-	Tue May 21 14:29:48 2024
+	Sun May 26 23:50:52 2024
 $end
 $version
 	Icarus Verilog
@@ -12,9 +12,14 @@ $scope module adder_tb $end
 $var wire 32 ! A [31:0] $end
 $var wire 32 " B [31:0] $end
 $var wire 32 # Q [31:0] $end
+$var parameter 32 $ WIDTH $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100000 $
+$end
 #0
 $dumpvars
 b11 #

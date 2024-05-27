@@ -4,7 +4,6 @@ module forwarding_unit (
     output wire [1:0] FORWARD_A, FORWARD_B
 );
     
-//logica
 
 always_comb begin
     {FORWARD_A, FORWARD_B} = 4'b0000;
