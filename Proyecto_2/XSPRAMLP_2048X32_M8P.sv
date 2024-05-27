@@ -73,6 +73,7 @@
 `enable_portfaults
 `expand_vectornets
 `timescale 1ns/10ps
+`define DEFAULT_WORST_DELAY_OFF
 
 primitive XSPRAMLP_2048X32_M8P_DFF  (Q, D, C, RN, SN, NOTIFY);
 

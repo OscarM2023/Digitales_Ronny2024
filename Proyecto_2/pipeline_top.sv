@@ -1,8 +1,8 @@
 module pipeline_top #(
     parameter WIDTH = 32
 )(
-    input wire rst,
-    input wire clk
+    input wire RST,
+    input wire CLK
 );
 
 wire pc_mux_to_pc [WIDTH-1:0];
