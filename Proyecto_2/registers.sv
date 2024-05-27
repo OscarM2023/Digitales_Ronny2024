@@ -27,4 +27,4 @@ end
 assign REG_DATA1=(ADR_REG1!={$clog2(DEPTH){1'b0}})?registers_bank[ADR_REG1]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
 assign REG_DATA2=(ADR_REG2!={$clog2(DEPTH){1'b0}})?registers_bank[ADR_REG2]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
     
-endmodule
+endmodulemem_wb_regwrite_to_registers
