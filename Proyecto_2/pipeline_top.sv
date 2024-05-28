@@ -184,7 +184,7 @@ and1 AND_BRANCHING(
     .Q(and_branch_was_taken)
 );
 
-mux21 STALL_CONTROL_MUX #(6)(
+mux21 #(6) STALL_CONTROL_MUX (
     .SEL(stall_signal_for_mux),
     .IN0(control_signals_to_be_muxed),
     .IN1(9{1'b0}),
