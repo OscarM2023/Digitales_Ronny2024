@@ -26,7 +26,7 @@ always_comb begin
     end
     
     else if (
-        ARD_MEM_WB
+        REGWRITE_MEM_WB
         && (ARD_MEM_WB != 0)
         && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
         && (ARD_EX_MEM == ARS1)
@@ -37,7 +37,7 @@ always_comb begin
     end
     
     else if (
-        ARD_MEM_WB
+        REGWRITE_MEM_WB
         && (ARD_MEM_WB != 0)
         && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
         && (ARD_EX_MEM == ARS2)

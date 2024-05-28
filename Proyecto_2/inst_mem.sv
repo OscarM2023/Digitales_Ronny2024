@@ -15,7 +15,7 @@ module inst_mem #(parameter width=32,depth=2048,adr_in=11)
 integer i;
 always_ff @(posedge clk) begin
     if(!rst) begin  
-    for(i=0;i<80;i=i+1) begin
+    for(i=0;i<depth;i=i+1) begin
         memory[i]<={width-1{1'b0}};
     end
     end

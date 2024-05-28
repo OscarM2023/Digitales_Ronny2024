@@ -31,6 +31,7 @@ wire [WIDTH-1:0] pc_mux_to_pc;
 wire [WIDTH-1:0] pc_to_inst_mem;
 wire [WIDTH-1:0] pc_adder_to_pc_mux;
 wire [WIDTH-1:0] inst_mem_to_inst_pipe;
+
 wire [WIDTH-1:0] instruction;
 wire [WIDTH-1:0] register_1;
 wire [WIDTH-1:0] register_2;
@@ -130,15 +131,18 @@ mux21 PC_MUX(
 pc PC(
     .clk(clk),
     .rst(rst),
-    .STALL(hazard_unit_pcwrite_signal),
+    .STALL(hazard_unit_stall_signal),
     .IN(pc_mux_to_pc),
     .OUT(pc_to_inst_mem)
 );
 
+reg [10:0] by_byte_addressing_to_by_word;
+assign by_byte_addressing_to_by_word = pc_to_inst_mem[12:2];
+
 inst_mem INST_MEM(
     .clk(clk),
     .rst(rst),
-    .read_adr(pc_to_inst_mem[10:0]),
+    .read_adr(by_byte_addressing_to_by_word),
     .instruction(inst_mem_to_inst_pipe)
 );
 
@@ -169,12 +173,20 @@ pipe_if_id PIPE_IF_ID(
     .INSTRUCTION_OUT(instruction)
 );
 
+reg [4:0] add_reg_1;
+reg [4:0] add_reg_2;
+
+always_comb begin
+    add_reg_1 = instruction[19:15];
+    add_reg_2 = instruction[24:20];
+end 
+
 registers REGISTERS(
     .clk(clk),
     .rst(rst),
     .REGWRITE(mem_wb_regwrite_to_registers),
-    .ADR_REG1(instruction[19:15]),
-    .ADR_REG2(instruction[24:20]),
+    .ADR_REG1(add_reg_1),
+    .ADR_REG2(add_reg_2),
     .ADR_WR_REG(mem_wb_a_rd_to_registers),
     .WR_DATA(data_mem_skip_mux_out_to_registers),
     .REG_DATA1(register_1),
@@ -222,6 +234,9 @@ mux21 #(9) STALL_CONTROL_MUX (
     .OUT(control_signals_from_mux)
 );
 
+reg [4:0] ad_reg_rd ;
+assign ad_reg_rd = instruction[11:7];
+
 pipe_id_ex PIPE_ID_EX(
     .clk(clk),
     .rst(rst),
@@ -231,9 +246,9 @@ pipe_id_ex PIPE_ID_EX(
     .MEMTOREG_IN(mux_memtoreg_to_id_ex),
     .MEMWRITE_IN(mux_memwrite_to_id_ex),
     .MEMREAD_IN(mux_memtoread_to_id_ex),
-    .ARS1_IN(instruction[19:15]),
-    .ARS2_IN(instruction[24:20]),
-    .ARD_IN(instruction[11:7]),
+    .ARS1_IN(add_reg_1),
+    .ARS2_IN(add_reg_2),
+    .ARD_IN(ad_reg_rd),
     .RS1_IN(register_1),
     .RS2_IN(register_2),
     .IMMEDIATE_IN(immediate_sexted),
@@ -252,16 +267,18 @@ pipe_id_ex PIPE_ID_EX(
     .IMMEDIATE_OUT(id_ex_imm_sexted_to_alu_src_mux)
 );
 
+reg [6:0] op_code ;
+assign op_code = instruction[6:0];
+
 hazard_unit HAZARD_UNIT(
     .MEMREAD_ID_EX(id_ex_memtoread_to_hazards),
     .BEQ_WRONG_PRED(register_1_equals_register_2),
-    .OP_CODE(instruction[6:0]),
-    .ARS1_IF_ID(instruction[19:15]),
-    .ARS2_IF_ID(instruction[24:20]),
+    .OP_CODE(op_code),
+    .ARS1_IF_ID(add_reg_1),
+    .ARS2_IF_ID(add_reg_2),
     .ARD_ID_EX(id_ex_a_rd_to_ex_mem),
     .STALL(hazard_unit_stall_signal),
-    .MUX_SEL(stall_signal_for_mux),
-    .PCWRITE(hazard_unit_pcwrite_signal)
+    .MUX_SEL(stall_signal_for_mux)
 );
 
 mux41 FORWARD_A_MUX(

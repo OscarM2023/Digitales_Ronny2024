@@ -10,7 +10,7 @@ integer i;
 always @(posedge clk) begin
 
     if(!rst) begin  
-    for(i=0;i<2047;i=i+1) begin
+    for(i=0;i<2048;i=i+1) begin
         memory[i]<={8{1'b0}}; //caso de reset en bajo, colocar todos los registros en 0.
     end
     end

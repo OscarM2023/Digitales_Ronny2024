@@ -21,11 +21,13 @@ $display("PC:",pipeline_prueba.PC.OUT);
 mostrar_inst_mem(6);
 mostrar_regs(5);
 mostrar_data_mem(1);
-#1
+
+#5
 RST<=1'b1;
-#1
-$readmemh("data_initial", pipeline_prueba.DATA_MEM.memory);
-$readmemb("inst_initial", pipeline_prueba.INST_MEM.memory);
+#3
+
+$readmemh("data_initial.mem", pipeline_prueba.DATA_MEM.memory);
+$readmemb("inst_initial.mem", pipeline_prueba.INST_MEM.memory);
 
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
@@ -35,7 +37,7 @@ mostrar_regs(5);
 mostrar_data_mem(5);
 $display("----------------");
 
-for(integer i=0;i<300;i=i+1) begin
+for(integer i=0;i<100;i=i+1) begin
 #2
 $display("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
 $display("PC:",pipeline_prueba.PC.OUT);
@@ -55,7 +57,7 @@ endtask
 
 task automatic mostrar_regs(input integer b); //funcion para mostrar "b" registros
   for(integer a=0;a<b;a=a+1) begin
-  $display("Reg[%d]:(h)|%h|(d)|%d|",a,pipeline_prueba.REGISTERS.registers[a],pipeline_prueba.REGISTERS.registers[a]);
+  $display("Reg[%d]:(h)|%h|(d)|%d|",a,pipeline_prueba.REGISTERS.register_bank[a],pipeline_prueba.REGISTERS.register_bank[a]);
   end
 endtask 
 
