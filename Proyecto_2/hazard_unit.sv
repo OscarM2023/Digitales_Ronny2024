@@ -3,7 +3,7 @@ module hazard_unit (
     input wire [4:0] ARS1_IF_ID, ARS2_IF_ID, ARD_ID_EX,
     input wire [6:0] OP_CODE,
 
-    output wire STALL, MUX_SEL, PCWRITE
+    output reg STALL, MUX_SEL, PCWRITE
 );
 
 //logica

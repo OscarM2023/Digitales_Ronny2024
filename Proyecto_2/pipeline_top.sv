@@ -16,31 +16,30 @@
 `include "registers.sv"
 `include "signextend.sv"
 `include "XSPRAMLP_2048X32_M8P.sv"
-`include "pipeline_top.sv"
 
 
 
 module pipeline_top #(
     parameter WIDTH = 32
 )(
-    input wire RST,
-    input wire CLK
+    input wire rst,
+    input wire clk
 );
 
-wire pc_mux_to_pc [WIDTH-1:0];
-wire pc_to_inst_mem [WIDTH-1:0];
-wire pc_adder_to_pc_mux [WIDTH-1:0];
-wire inst_mem_to_inst_pipe [WIDTH-1:0];
-wire instruction [WIDTH-1:0];
-wire register_1 [WIDTH-1:0];
-wire register_2 [WIDTH-1:0];
+wire [WIDTH-1:0] pc_mux_to_pc;
+wire [WIDTH-1:0] pc_to_inst_mem;
+wire [WIDTH-1:0] pc_adder_to_pc_mux;
+wire [WIDTH-1:0] inst_mem_to_inst_pipe;
+wire [WIDTH-1:0] instruction;
+wire [WIDTH-1:0] register_1;
+wire [WIDTH-1:0] register_2;
 wire register_1_equals_register_2;
-wire pipe_pc_passthrough [WIDTH-1:0];
-wire imm_adder_to_pc_mux [WIDTH-1:0];
-wire immediate_sexted [WIDTH-1:0];
-wire alu_operation [3:0];
+wire [WIDTH-1:0] pipe_pc_passthrough;
+wire [WIDTH-1:0] imm_adder_to_pc_mux;
+wire [WIDTH-1:0] immediate_sexted;
+wire [3:0] alu_operation;
 wire stall_signal_for_mux;
-wire control_signals_to_be_muxed[9:0];
+reg  [8:0] control_signals_to_be_muxed;
 wire control_pcsrc;
 wire control_alusrc_to_mux;
 wire control_memtoread_to_mux;
@@ -60,63 +59,63 @@ assign control_signals_to_be_muxed = {
     control_memtoread_to_mux
 };
 
-wire control_signals_from_mux [9:0];
+wire [8:0] control_signals_from_mux;
 
-wire mux_aluop_to_id_ex [3:0];
-wire mux_alusrc_to_id_ex;
-wire mux_memtoread_to_id_ex;
-wire mux_memwrite_to_id_ex;
-wire mux_memtoreg_to_id_ex;
-wire mux_regwrite_to_id_ex;
+reg [3:0] mux_aluop_to_id_ex;
+reg mux_alusrc_to_id_ex;
+reg mux_memtoread_to_id_ex;
+reg mux_memwrite_to_id_ex;
+reg mux_memtoreg_to_id_ex;
+reg mux_regwrite_to_id_ex;
 
 always_comb begin
 
-    control_signals_from_mux = {
+    {
         mux_aluop_to_id_ex,
         mux_alusrc_to_id_ex,
         mux_regwrite_to_id_ex,
         mux_memtoreg_to_id_ex,
         mux_memwrite_to_id_ex,
         mux_memtoread_to_id_ex
-    };
+    } = control_signals_from_mux;
 
 end 
 
-wire id_ex_aluop_to_alu [3:0];
+wire [3:0] id_ex_aluop_to_alu;
 wire id_ex_alusrc_to_alusrc_mux;
 wire id_ex_memtoread_to_hazards;
 wire id_ex_memwrite_to_ex_mem;
 wire id_ex_memtoreg_to_ex_mem;
 wire id_ex_regwrite_to_ex_mem;
 
-wire id_ex_rs1_to_forward_a_mux [WIDTH-1:0];
-wire id_ex_rs2_to_forward_b_mux [WIDTH-1:0];
-wire id_ex_a_rs1_to_forwarding [4:0];
-wire id_ex_a_rs2_to_forwarding [4:0];
-wire id_ex_a_rd_to_ex_mem [4:0];
-wire id_ex_imm_sexted_to_alu_src_mux [WIDTH-1:0];
+wire [WIDTH-1:0] id_ex_rs1_to_forward_a_mux;
+wire [WIDTH-1:0] id_ex_rs2_to_forward_b_mux;
+wire [4:0] id_ex_a_rs1_to_forwarding;
+wire [4:0] id_ex_a_rs2_to_forwarding;
+wire [4:0] id_ex_a_rd_to_ex_mem;
+wire [WIDTH-1:0] id_ex_imm_sexted_to_alu_src_mux;
 
-wire forward_a_mux_to_alu_a_in [WIDTH-1:0];
-wire forward_b_mux_to_alu_src_mux [WIDTH-1:0];
-wire alu_src_mux_to_alu_b_in [WIDTH-1:0];
-wire alu_out_to_ex_mem_pipe [WIDTH-1:0];
-wire forwarding_forward_a_sel_signal [1:0];
-wire forwarding_forward_b_sel_signal [1:0];
+wire [WIDTH-1:0] forward_a_mux_to_alu_a_in;
+wire [WIDTH-1:0] forward_b_mux_to_alu_src_mux;
+wire [WIDTH-1:0] alu_src_mux_to_alu_b_in;
+wire [WIDTH-1:0] alu_out_to_ex_mem_pipe;
+wire [1:0] forwarding_forward_a_sel_signal;
+wire [1:0] forwarding_forward_b_sel_signal;
 
 wire ex_mem_memwrite_to_data_mem;
 wire ex_mem_memtoreg_to_mem_wb;
 wire ex_mem_regwrite_to_mem_wb;
-wire ex_mem_result_op_to_data_mem [WIDTH-1:0];
-wire ex_mem_wr_data_to_data_mem [WIDTH-1:0];
-wire ex_mem_a_rd_to_mem_wb [4:0];
+wire [WIDTH-1:0] ex_mem_result_op_to_data_mem;
+wire [WIDTH-1:0] ex_mem_wr_data_to_data_mem;
+wire [4:0] ex_mem_a_rd_to_mem_wb;
 
-wire data_mem_out_to_mem_wb [WIDTH-1:0];
+wire [WIDTH-1:0] data_mem_out_to_mem_wb;
 wire mem_wb_memtoreg_to_data_mem_skip_mux;
 wire mem_wb_regwrite_to_registers;
-wire data_read_to_data_mem_skip_mux [WIDTH-1:0];
-wire result_op_to_data_mem_skip_mux [WIDTH-1:0];
-wire mem_wb_a_rd_to_registers [4:0];
-wire data_mem_skip_mux_out_to_registers [WIDTH-1:0];
+wire [WIDTH-1:0] data_read_to_data_mem_skip_mux;
+wire [WIDTH-1:0] result_op_to_data_mem_skip_mux;
+wire [4:0] mem_wb_a_rd_to_registers;
+wire [WIDTH-1:0] data_mem_skip_mux_out_to_registers;
 
 
 
@@ -127,7 +126,7 @@ mux21 PC_MUX(
     .OUT(pc_mux_to_pc)
 );
 
-PC PC(
+pc PC(
     .clk(clk),
     .rst(rst),
     .STALL(hazard_unit_pcwrite_signal),
@@ -137,7 +136,7 @@ PC PC(
 
 XSPRAMLP_2048X32_M8P INST_MEM(
     .CLK(clk),
-    .A(pc_to_inst_mem),
+    .A(pc_to_inst_mem[10:0]),
     .Q(inst_mem_to_inst_pipe),
     .WEn(1'b1)//Es activo en bajo
 
@@ -206,7 +205,7 @@ and1 AND_BRANCHING(
     .Q(and_branch_was_taken)
 );
 
-mux21 #(6) STALL_CONTROL_MUX (
+mux21 #(9) STALL_CONTROL_MUX (
     .SEL(stall_signal_for_mux),
     .IN0(control_signals_to_be_muxed),
     .IN1({9'b0}),
@@ -288,11 +287,13 @@ alu ALU(
 );
 
 pipe_ex_mem PIPE_EX_MEM(
+    .clk(clk),
+    .rst(rst),
     .MEMWRITE_IN(id_ex_memwrite_to_ex_mem),
     .MEMTOREG_IN(id_ex_memtoreg_to_ex_mem),
     .REGWRITE_IN(id_ex_regwrite_to_ex_mem),
     .RESULTOP_IN(alu_out_to_ex_mem_pipe),
-    .WR_DATA_IN(forward_b_mux_to_alu_src_mux),
+    .WRDATA_IN(forward_b_mux_to_alu_src_mux),
     .ARD_IN(id_ex_a_rd_to_ex_mem),
 
     .MEMWRITE_OUT(ex_mem_memwrite_to_data_mem),
@@ -310,14 +311,14 @@ forwarding_unit FORWARDING_UNIT(
     .ARS2(id_ex_a_rs2_to_forwarding),
     .REGWRITE_EX_MEM(ex_mem_regwrite_to_mem_wb),
     .REGWRITE_MEM_WB(mem_wb_regwrite_to_registers),
-    .FORWARD_A(forward_a_mux_to_alu_a_in),
-    .FORWARD_B(forward_b_mux_to_alu_src_mux)
+    .FORWARD_A(forwarding_forward_a_sel_signal),
+    .FORWARD_B(forwarding_forward_b_sel_signal)
 );
 
 XSPRAMLP_2048X32_M8P DATA_MEM(
     .CLK(clk),
     .CEn(1'b1),
-    .A(ex_mem_result_op_to_data_mem),
+    .A(ex_mem_result_op_to_data_mem[10:0]),
     .D(ex_mem_wr_data_to_data_mem),
     .WEn(~ex_mem_memwrite_to_data_mem),//Es activo en bajo
     .Q(data_mem_out_to_mem_wb)
@@ -325,6 +326,8 @@ XSPRAMLP_2048X32_M8P DATA_MEM(
 );
 
 pipe_mem_wb PIPE_MEM_WB(
+    .clk(clk),
+    .rst(rst),
     .MEMTOREG_IN(ex_mem_memtoreg_to_mem_wb),
     .REGWRITE_IN(ex_mem_regwrite_to_mem_wb),
     .MEMDATA_IN(data_mem_out_to_mem_wb),

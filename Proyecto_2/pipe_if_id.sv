@@ -4,8 +4,8 @@ module pipe_if_id #(parameter WIDTH=32) (
     input wire [WIDTH-1:0] PC_IN,
     input wire [WIDTH-1:0] INSTRUCTION_IN,
     
-    output wire [WIDTH-1:0] PC_OUT,
-    output wire [WIDTH-1:0] INSTRUCTION_OUT
+    output reg [WIDTH-1:0] PC_OUT,
+    output reg [WIDTH-1:0] INSTRUCTION_OUT
 );
 
 always_ff @(posedge clk) begin 

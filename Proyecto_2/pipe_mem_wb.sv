@@ -3,11 +3,11 @@ module pipe_mem_wb #(parameter WIDTH=32) (
 
     input wire MEMTOREG_IN, REGWRITE_IN,
     input wire [WIDTH-1:0] MEMDATA_IN, RESULTOP_IN,
-    input wire ARD_IN,
+    input wire [4:0] ARD_IN,
 
-    input wire MEMTOREG_OUT, REGWRITE_OUT,
-    input wire [WIDTH-1:0] MEMDATA_OUT, RESULTOP_OUT,
-    input wire ARD_OUT
+    output reg MEMTOREG_OUT, REGWRITE_OUT,
+    output reg [WIDTH-1:0] MEMDATA_OUT, RESULTOP_OUT,
+    output reg [4:0] ARD_OUT
 );
 
 always_ff @(posedge clk) begin

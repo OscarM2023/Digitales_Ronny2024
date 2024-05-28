@@ -1,8 +1,8 @@
 module control_unit #(parameter WIDTH=32) (
     input wire [WIDTH-1:0] INSTRUCTION,
 
-    output wire [3:0] ALUOP,
-    output wire PCSRC, ALUSRC, MEMTOREAD, MEMWRITE, MEMTOREG, REGWRITE
+    output reg [3:0] ALUOP,
+    output reg PCSRC, ALUSRC, MEMTOREAD, MEMWRITE, MEMTOREG, REGWRITE
 );
     
 localparam [6:0] beq_op = 7'b1100011;

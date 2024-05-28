@@ -4,7 +4,7 @@ module z_pipeline_tb;
 
   reg  RST,CLK;
 
- pipeline_top pipeline_prueba (.RST(RST),.CLK(CLK));
+ pipeline_top pipeline_prueba (.rst(RST),.clk(CLK));
 
  initial forever #1 CLK=~CLK;
 
