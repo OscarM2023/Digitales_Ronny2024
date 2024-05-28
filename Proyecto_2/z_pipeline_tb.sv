@@ -22,11 +22,11 @@ $display("PC:",pipeline_prueba.PC.OUT);
 RST<=1'b1;
 #1
 
-#0 $readmemb("inst_initial", INST_MEM.sub1.RAM_matrix);
-$display("\n%t: INFO: %m: loading inst_initial %s\n", $realtime, inst_initial);
+#0 $readmemb("inst_initial", pipeline_prueba.INST_MEM.sub1.RAM_matrix);
+$display("\n%t: INFO: %m: loading inst_initial %s\n", $realtime, "inst_initial");
 
-#0 $readmemb("data_initial", DATA_MEM.sub1.RAM_matrix);
-$display("\n%t: INFO: %m: loading data_initial %s\n", $realtime, data_initial);
+#0 $readmemb("data_initial", pipeline_prueba.DATA_MEM.sub1.RAM_matrix);
+$display("\n%t: INFO: %m: loading data_initial %s\n", $realtime, "data_initial");
 
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
@@ -46,7 +46,7 @@ end
 
 task automatic mostrar_regs(input integer b); //funcion para mostrar "b" registros
   for(integer a=0;a<b;a=a+1) begin
-  $display("Reg[%d]:(h)|%h|(d)|%d|",a,monocicle_prueba.register_mono.registers[a],monocicle_prueba.register_mono.registers[a]);
+  $display("Reg[%d]:(h)|%h|(d)|%d|",a,pipeline_prueba.REGISTERS.register_bank[a],pipeline_prueba.REGISTERS.register_bank[a]);
   end
 endtask 
 

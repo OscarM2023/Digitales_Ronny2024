@@ -1,0 +1,84 @@
+Command: vcs -Mupdate z_pipeline_tb.sv -full64 -debug_acc+all+dmptf -debug_region+cell+encrypt \
+-sverilog -l log
+                         Chronologic VCS (TM)
+       Version R-2020.12-SP2_Full64 -- Mon May 27 20:48:12 2024
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+Parsing design file 'z_pipeline_tb.sv'
+Parsing included file 'pipeline_top.sv'.
+Back to file 'z_pipeline_tb.sv'.
+Top Level Modules:
+       z_pipeline_tb
+TimeScale is 1 ns / 1 ps
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 101
+"mux21 PC_MUX( .SEL (and_branch_was_taken),  .IN0 (pc_adder_to_pc_mux),  .IN1 (imm_adder_to_pc_mux),  .OUT (pc_mux_to_pc));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 108
+"PC PC( .clk (clk),  .rst (rst),  .STALL (hazard_unit_pcwrite_signal),  .IN (pc_mux_to_pc),  .OUT (pc_to_inst_mem));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 116
+"XSPRAMLP_2048X32_M8P INST_MEM( .CLK (clk),  .A (pc_to_inst_mem),  .Q (inst_mem_to_inst_pipe),  .WEn (1'b1));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 124
+"adder PC_ADDER( .A (pc_to_inst_mem),  .B (32'h00000004),  .Q (pc_adder_to_pc_mux));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 130
+"pipe_if_id PIPE_IF_ID( .clk (clk),  .rst (rst),  .FLUSH (and_branch_was_taken),  .STALL (hazard_unit_stall_signal),  .PC_IN (pc_to_inst_mem),  .INSTRUCTION_IN (inst_mem_to_inst_pipe),  .PC_OUT (pipe_pc_passthrough),  .INSTRUCTION_OUT (instruction));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 141
+"registers REGISTERS( .clk (clk),  .rst (rst),  .REGWRITE (mem_wb_regwrite_to_registers),  .ADR_REG1 (instruction[19:15]),  .ADR_REG2 (instruction[24:20]),  .ADR_WR_REG (mem_wb_a_rd_to_registers),  .WR_DATA (data_mem_skip_mux_out_to_registers),  .REG_DATA1 (register_1),  .REG_DATA2 (register_2));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 153
+"branch_comp BRANCH_COMPARE( .IN1 (register_1),  .IN2 (register_2),  .OUT (register_1_equals_register_2));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 159
+"adder IMM_ADDER( .A (pipe_pc_passthrough),  .B (immediate_sexted),  .Q (imm_adder_to_pc_mux));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 165
+"signextend IMM_GEN_SIGN_EXTENDED( .IN (instruction),  .OUT (immediate_sexted));"
+  Module definition of above instance is not found in the design.
+
+
+Error-[URMI] Unresolved modules
+pipeline_top.sv, 170
+"control_unit CONTROL_UNIT( .INSTRUCTION (instruction),  .ALUOP (alu_operation),  .PCSRC (control_pcsrc),  .ALUSRC (control_alusrc_to_mux),  .MEMTOREAD (control_memtoread_to_mux),  .MEMWRITE (control_memwrite_to_mux),  .MEMTOREG (control_memtoreg_to_mux),  .REGWRITE (control_regwrite_to_mux));"
+  Module definition of above instance is not found in the design.
+
+
+Note-[MAX_ERROR_COUNT] Maximum error count reached
+  Current number of errors has reached the default maximum error count (10).
+  Please use +error+<count> to increase the limit.
+
+10 errors
+CPU time: .228 seconds to compile
