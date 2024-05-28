@@ -10,22 +10,22 @@ module z_pipeline_tb;
 
 initial begin
 
-$dumpfile("prueba_monocicle");
-$dumpvars(0,z_monocicle_tb);
+$dumpfile("prueba_pipeline");
+$dumpvars(0,z_pipeline_tb);
 
 
 
 CLK=1'b0; //Inicializar el clock en bajo
 RST<=1'b0;
-$display("PC:",pipeline_prueba.PC_mono.OUT);
+$display("PC:",pipeline_prueba.PC.OUT);
 #1
 RST<=1'b1;
 #1
 
-#0 $readmemb(inst_initial, INST_MEM.sub1.RAM_matrix);
+#0 $readmemb("inst_initial", INST_MEM.sub1.RAM_matrix);
 $display("\n%t: INFO: %m: loading inst_initial %s\n", $realtime, inst_initial);
 
-#0 $readmemb(data_initial, DATA_MEM.sub1.RAM_matrix);
+#0 $readmemb("data_initial", DATA_MEM.sub1.RAM_matrix);
 $display("\n%t: INFO: %m: loading data_initial %s\n", $realtime, data_initial);
 
 $display("\nACTIVACION DE RESET\n");
