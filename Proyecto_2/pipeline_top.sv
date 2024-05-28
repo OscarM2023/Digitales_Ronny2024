@@ -178,7 +178,7 @@ control_unit CONTROL_UNIT(
     .REGWRITE(control_regwrite_to_mux)
 );
 
-and AND_BRANCHING(
+and1 AND_BRANCHING(
     .A(register_1_equals_register_2),
     .B(control_pcsrc),
     .Q(and_branch_was_taken)
