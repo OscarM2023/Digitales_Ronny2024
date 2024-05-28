@@ -15,7 +15,8 @@
 `include "pipe_mem_wb.sv"
 `include "registers.sv"
 `include "signextend.sv"
-`include "XSPRAMLP_2048X32_M8P.sv"
+`include "data_mem.sv"
+`include "inst_mem.sv"
 
 
 
@@ -134,6 +135,14 @@ pc PC(
     .OUT(pc_to_inst_mem)
 );
 
+inst_mem INST_MEM(
+    .clk(clk),
+    .rst(rst),
+    .read_adr(pc_to_inst_mem[10:0]),
+    .instruction(inst_mem_to_inst_pipe)
+);
+
+/*
 XSPRAMLP_2048X32_M8P INST_MEM(
     .CLK(clk),
     .A(pc_to_inst_mem[10:0]),
@@ -141,6 +150,7 @@ XSPRAMLP_2048X32_M8P INST_MEM(
     .WEn(1'b1)//Es activo en bajo
 
 );
+*/
 
 adder PC_ADDER(
     .A(pc_to_inst_mem),
@@ -315,6 +325,16 @@ forwarding_unit FORWARDING_UNIT(
     .FORWARD_B(forwarding_forward_b_sel_signal)
 );
 
+data_mem DATA_MEM(
+    .clk(clk),
+    .rst(rst),
+    .wrt_en(ex_mem_memwrite_to_data_mem),
+    .address(ex_mem_result_op_to_data_mem[10:0]),
+    .write_data(ex_mem_wr_data_to_data_mem),
+    .read_data(data_mem_out_to_mem_wb)
+);
+
+/*
 XSPRAMLP_2048X32_M8P DATA_MEM(
     .CLK(clk),
     .CEn(1'b1),
@@ -324,6 +344,7 @@ XSPRAMLP_2048X32_M8P DATA_MEM(
     .Q(data_mem_out_to_mem_wb)
 
 );
+*/
 
 pipe_mem_wb PIPE_MEM_WB(
     .clk(clk),

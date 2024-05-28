@@ -11,7 +11,7 @@ module hazard_unit (
 localparam [6:0] beq_op = 7'b1100011;
 
 always_comb begin
-
+    {STALL, MUX_SEL, PCWRITE} = 3'b0;
     if (MEMREAD_ID_EX && ((ARD_ID_EX == ARS1_IF_ID) || (ARD_ID_EX == ARS2_IF_ID))){STALL, MUX_SEL} = 2'b11;
     else {STALL, MUX_SEL} = 2'b00;
 

@@ -71,7 +71,7 @@
 `celldefine
 `suppress_faults
 `enable_portfaults
-`expand_vectornets
+//`expand_vectornets
 `timescale 1ns/10ps
 `define DEFAULT_WORST_DELAY_OFF
 
