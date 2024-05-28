@@ -14,17 +14,17 @@ reg [WIDTH-1:0] register_bank [DEPTH-1:0];
 always_ff @(negedge clk) begin // clk negado en caso de escritura y lectura en mismo ciclo!!!!
     
     if(regwrite && (ADR_WR_REG!={$clog2(DEPTH){1'b0}})) begin //nunca escribir en registro x0
-         registers[ADR_WR_REG] <=WR_DATA;
+         register_bank [ADR_WR_REG] <=WR_DATA;
      end
 
     if(!rst) begin  
     for(integer i=0;i<DEPTH;i=i+1) begin
-        registers[i]<={WIDTH{1'b0}};
+        register_bank[i]<={WIDTH{1'b0}};
     end
     end
 end
 
-assign REG_DATA1=(ADR_REG1!={$clog2(DEPTH){1'b0}})?registers_bank[ADR_REG1]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
-assign REG_DATA2=(ADR_REG2!={$clog2(DEPTH){1'b0}})?registers_bank[ADR_REG2]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
+assign REG_DATA1=(ADR_REG1!={$clog2(DEPTH){1'b0}})?register_bank[ADR_REG1]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
+assign REG_DATA2=(ADR_REG2!={$clog2(DEPTH){1'b0}})?register_bank[ADR_REG2]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
     
-endmodulemem_wb_regwrite_to_registers
+endmodule

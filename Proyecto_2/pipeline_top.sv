@@ -1,3 +1,24 @@
+`include "adder.sv"
+`include "alu.sv"
+`include "and1.sv"
+`include "branch_comp.sv"
+`include "control_unit.sv"
+`include "forwarding_unit.sv"
+`include "hazard_unit.sv"
+`include "mux21.sv"
+`include "mux41.sv"
+`include "PC.sv"
+`include "pipe_ex_mem.sv"
+`include "pipe_id_ex.sv"
+`include "pipe_if_id.sv"
+`include "pipe_mem_wb.sv"
+`include "registers.sv"
+`include "signextend.sv"
+`include "XSPRAMLP_2048X32_M8P.sv"
+`include "pipeline_top.sv"
+
+
+
 module pipeline_top #(
     parameter WIDTH = 32
 )(
