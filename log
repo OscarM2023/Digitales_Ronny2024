@@ -1,0 +1,7 @@
+Command: vcs -Mupdate z_pipeline_tb.sv -full64 -debug_acc+all+dmptf -debug_region+cell+encrypt \
+-sverilog -l log
+
+Error-[FILE_CANT_FIND_ERR] File not found
+  File "z_pipeline_tb.sv" does not exist or read permission denied
+  Make sure the file "z_pipeline_tb.sv" exists and has read permissions.
+

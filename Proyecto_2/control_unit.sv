@@ -1,4 +1,4 @@
-module #(parameter WIDTH=32) (
+module control_unit #(parameter WIDTH=32) (
     input wire [WIDTH-1:0] INSTRUCTION,
 
     output wire [3:0] ALUOP,
@@ -12,41 +12,41 @@ localparam [6:0] lw_op = 7'b0000011;
 
 always @(*) begin
     MEMTOREAD = 1'b0;
-    case (instruction[6:0])
+    case (INSTRUCTION[6:0])
         beq_op: begin
             {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b10000;
-            ALUOp=4'b0110;
+            ALUOP=4'b0110;
         end
         sw_op: begin
             {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00110;
-            ALUOp=4'b0010;
+            ALUOP=4'b0010;
         end
         lw_op: begin
             {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b01011;
-            ALUOp=4'b0010;
+            ALUOP=4'b0010;
             MEMTOREAD = 1'b1;
         end
         arit_op: begin
-        case (instruction[10:7])
+        case (INSTRUCTION[10:7])
             4'b1000: begin //resta
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00001;
-                 ALUOp=4'b0110;
+                 ALUOP=4'b0110;
             end
             4'b0000: begin //suma
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00001;
-                 ALUOp=4'b0010;
+                 ALUOP=4'b0010;
             end
               4'b0110: begin //or
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00001;
-                 ALUOp=4'b0001;
+                 ALUOP=4'b0001;
             end
              4'b0111: begin //and
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00001;
-                 ALUOp=4'b0000;
+                 ALUOP=4'b0000;
             end
              default: begin
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b1111;
-                ALUOp=4'b1111;
+                ALUOP=4'b1111;
              end   
 
 
@@ -55,7 +55,7 @@ always @(*) begin
 
         default: begin
             {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b1111;
-            ALUOp=4'b1111;
+            ALUOP=4'b1111;
         end
     endcase
         

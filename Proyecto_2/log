@@ -1,7 +1,7 @@
 Command: vcs -Mupdate z_pipeline_tb.sv -full64 -debug_acc+all+dmptf -debug_region+cell+encrypt \
 -sverilog -l log
                          Chronologic VCS (TM)
-       Version R-2020.12-SP2_Full64 -- Mon May 27 20:48:12 2024
+       Version R-2020.12-SP2_Full64 -- Mon May 27 21:34:42 2024
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -11,69 +11,159 @@ Command: vcs -Mupdate z_pipeline_tb.sv -full64 -debug_acc+all+dmptf -debug_regio
 
 Parsing design file 'z_pipeline_tb.sv'
 Parsing included file 'pipeline_top.sv'.
-Back to file 'z_pipeline_tb.sv'.
-Top Level Modules:
-       z_pipeline_tb
-TimeScale is 1 ns / 1 ps
+Parsing included file 'adder.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'alu.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'and1.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'branch_comp.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'control_unit.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'forwarding_unit.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'hazard_unit.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'mux21.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'mux41.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'PC.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'pipe_ex_mem.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'pipe_id_ex.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'pipe_if_id.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'pipe_mem_wb.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'registers.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'signextend.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'XSPRAMLP_2048X32_M8P.sv'.
+Back to file 'pipeline_top.sv'.
+Parsing included file 'pipeline_top.sv'.
+Parsing included file 'adder.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 101
-"mux21 PC_MUX( .SEL (and_branch_was_taken),  .IN0 (pc_adder_to_pc_mux),  .IN1 (imm_adder_to_pc_mux),  .OUT (pc_mux_to_pc));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "adder.sv", 1
+  It is redeclared later at:
+  "adder.sv", 1: token is 'adder'
+  module adder #(parameter WIDTH=32) (
+              ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'alu.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 108
-"PC PC( .clk (clk),  .rst (rst),  .STALL (hazard_unit_pcwrite_signal),  .IN (pc_mux_to_pc),  .OUT (pc_to_inst_mem));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "alu.sv", 1
+  It is redeclared later at:
+  "alu.sv", 1: token is 'alu'
+  module alu #(parameter WIDTH=32)(
+            ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'and1.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 116
-"XSPRAMLP_2048X32_M8P INST_MEM( .CLK (clk),  .A (pc_to_inst_mem),  .Q (inst_mem_to_inst_pipe),  .WEn (1'b1));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "and1.sv", 1
+  It is redeclared later at:
+  "and1.sv", 1: token is 'and1'
+  module and1 (
+             ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'branch_comp.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 124
-"adder PC_ADDER( .A (pc_to_inst_mem),  .B (32'h00000004),  .Q (pc_adder_to_pc_mux));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "branch_comp.sv", 1
+  It is redeclared later at:
+  "branch_comp.sv", 1: token is 'branch_comp'
+  module branch_comp #(parameter WIDTH=32) (
+                    ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'control_unit.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 130
-"pipe_if_id PIPE_IF_ID( .clk (clk),  .rst (rst),  .FLUSH (and_branch_was_taken),  .STALL (hazard_unit_stall_signal),  .PC_IN (pc_to_inst_mem),  .INSTRUCTION_IN (inst_mem_to_inst_pipe),  .PC_OUT (pipe_pc_passthrough),  .INSTRUCTION_OUT (instruction));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "control_unit.sv", 1
+  It is redeclared later at:
+  "control_unit.sv", 1: token is 'control_unit'
+  module control_unit #(parameter WIDTH=32) (
+                     ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'forwarding_unit.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 141
-"registers REGISTERS( .clk (clk),  .rst (rst),  .REGWRITE (mem_wb_regwrite_to_registers),  .ADR_REG1 (instruction[19:15]),  .ADR_REG2 (instruction[24:20]),  .ADR_WR_REG (mem_wb_a_rd_to_registers),  .WR_DATA (data_mem_skip_mux_out_to_registers),  .REG_DATA1 (register_1),  .REG_DATA2 (register_2));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "forwarding_unit.sv", 1
+  It is redeclared later at:
+  "forwarding_unit.sv", 1: token is 'forwarding_unit'
+  module forwarding_unit (
+                        ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'hazard_unit.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 153
-"branch_comp BRANCH_COMPARE( .IN1 (register_1),  .IN2 (register_2),  .OUT (register_1_equals_register_2));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "hazard_unit.sv", 1
+  It is redeclared later at:
+  "hazard_unit.sv", 1: token is 'hazard_unit'
+  module hazard_unit (
+                    ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'mux21.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 159
-"adder IMM_ADDER( .A (pipe_pc_passthrough),  .B (immediate_sexted),  .Q (imm_adder_to_pc_mux));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "mux21.sv", 1
+  It is redeclared later at:
+  "mux21.sv", 1: token is 'mux21'
+  module mux21 #(parameter WIDTH=32) (
+              ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'mux41.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 165
-"signextend IMM_GEN_SIGN_EXTENDED( .IN (instruction),  .OUT (immediate_sexted));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "mux41.sv", 1
+  It is redeclared later at:
+  "mux41.sv", 1: token is 'mux41'
+  module mux41 #(parameter WIDTH=32) (
+              ^
+  Please remove one of the declarations and compile again.
 
+Back to file 'pipeline_top.sv'.
+Parsing included file 'PC.sv'.
 
-Error-[URMI] Unresolved modules
-pipeline_top.sv, 170
-"control_unit CONTROL_UNIT( .INSTRUCTION (instruction),  .ALUOP (alu_operation),  .PCSRC (control_pcsrc),  .ALUSRC (control_alusrc_to_mux),  .MEMTOREAD (control_memtoread_to_mux),  .MEMWRITE (control_memwrite_to_mux),  .MEMTOREG (control_memtoreg_to_mux),  .REGWRITE (control_regwrite_to_mux));"
-  Module definition of above instance is not found in the design.
+Error-[MPD] Module previously declared
+  The module was previously declared at: 
+  "PC.sv", 1
+  It is redeclared later at:
+  "PC.sv", 1: token is 'pc'
+  module pc #(parameter WIDTH=32)(
+           ^
+  Please remove one of the declarations and compile again.
 
 
 Note-[MAX_ERROR_COUNT] Maximum error count reached
@@ -81,4 +171,4 @@ Note-[MAX_ERROR_COUNT] Maximum error count reached
   Please use +error+<count> to increase the limit.
 
 10 errors
-CPU time: .228 seconds to compile
+CPU time: .242 seconds to compile

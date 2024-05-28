@@ -13,7 +13,7 @@ reg [WIDTH-1:0] register_bank [DEPTH-1:0];
 
 always_ff @(negedge clk) begin // clk negado en caso de escritura y lectura en mismo ciclo!!!!
     
-    if(regwrite && (ADR_WR_REG!={$clog2(DEPTH){1'b0}})) begin //nunca escribir en registro x0
+    if(REGWRITE && (ADR_WR_REG!={$clog2(DEPTH){1'b0}})) begin //nunca escribir en registro x0
          register_bank [ADR_WR_REG] <=WR_DATA;
      end
 
