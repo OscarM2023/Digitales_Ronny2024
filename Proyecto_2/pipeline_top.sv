@@ -187,7 +187,7 @@ and1 AND_BRANCHING(
 mux21 #(6) STALL_CONTROL_MUX (
     .SEL(stall_signal_for_mux),
     .IN0(control_signals_to_be_muxed),
-    .IN1(9{1'b0}),
+    .IN1({9'b0}),
     .OUT(control_signals_from_mux)
 );
 
@@ -238,7 +238,7 @@ mux41 FORWARD_A_MUX(
     .IN0(id_ex_rs1_to_forward_a_mux),
     .IN1(ex_mem_result_op_to_data_mem),
     .IN2(data_mem_skip_mux_out_to_registers),
-    .IN3(32{1'b0}),
+    .IN3({32'b0}),
     .OUT(forward_a_mux_to_alu_a_in)
 );
 
@@ -247,7 +247,7 @@ mux41 FORWARD_B_MUX(
     .IN0(id_ex_rs2_to_forward_b_mux),
     .IN1(ex_mem_result_op_to_data_mem),
     .IN2(data_mem_skip_mux_out_to_registers),
-    .IN3(32{1'b0}),
+    .IN3({32'b0}),
     .OUT(forward_b_mux_to_alu_src_mux)
 );
 
