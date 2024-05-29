@@ -11,7 +11,11 @@ module registers #(parameter WIDTH=32,DEPTH=32)(
 
 reg [WIDTH-1:0] register_bank [DEPTH-1:0];
 
-always_ff @(posedge clk) begin
+always_ff @(negedge clk) begin // clk negado en caso de escritura y lectura en mismo ciclo!!!!
+    
+    if(REGWRITE && (ADR_WR_REG!={$clog2(DEPTH){1'b0}})) begin //nunca escribir en registro x0
+         register_bank [ADR_WR_REG] <=WR_DATA;
+    end
 
     if(!rst) begin  
     for(integer i=0;i<DEPTH;i=i+1) begin
@@ -19,13 +23,6 @@ always_ff @(posedge clk) begin
         end
     end
 
-end
-
-always_ff @(negedge clk) begin // clk negado en caso de escritura y lectura en mismo ciclo!!!!
-    
-    if(REGWRITE && (ADR_WR_REG!={$clog2(DEPTH){1'b0}})) begin //nunca escribir en registro x0
-         register_bank [ADR_WR_REG] <=WR_DATA;
-     end
 end
 
 assign REG_DATA1=(ADR_REG1!={$clog2(DEPTH){1'b0}})?register_bank[ADR_REG1]:{WIDTH{1'b0}}; //si se lee registro x0 mostrar 0
