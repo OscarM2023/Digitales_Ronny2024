@@ -31,7 +31,7 @@ fHsimTaskFuncXmrsDbg               	0
 fHsimAllTaskFuncXmrs               	0
 fHsimDoXmrProcessing               	1
 fNoMergeDelays                     	0
-uGlblTimeUnit                      	4
+uGlblTimeUnit                      	7
 fHsimAllMtm                        	0
 fSimprofileNew                     	0
 fFsimFlag                          	0
@@ -55,7 +55,7 @@ fFsimEVCDEnabled                   	0
 fFsimForcelist                     	0
 fNewCBSemantics                    	1
 fSchedAtEnd                        	0
-fSpecifyInDesign                   	1
+fSpecifyInDesign                   	0
 fHsimDumpFlatData                  	1
 fHsimCompressDiag                  	1
 fHsimPowerOpt                      	0
@@ -964,7 +964,7 @@ fHsimMxConnFrc                     	0
 fHsimNewForceCbkVec                	0
 fHsimNewForceCbkVecDiag            	0
 fHsimMdbReplaceVpdHighConn         	1
-fHsimVpdHighConnReplaced           	1
+fHsimVpdHighConnReplaced           	0
 fHsimVpdOptSVTypes                 	1
 fHsimDlyInitFrc                    	0
 fHsimCompactVpdFn                  	1

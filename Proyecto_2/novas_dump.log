@@ -171,7 +171,7 @@ NOVAS_SYNC_MOTIF_DISP=
 MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
 USER=BONILLA_BLANCO_I_2024_dig
 VCS_EXEC_DONE=1
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/964ddecf_4466_4650_8872_d8564f26445a
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/4f99c583_83ba_4bb6_8a35_6a8c691227c3
 PWD=/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 HOME=/home/BONILLA_BLANCO_I_2024_dig
@@ -193,7 +193,7 @@ VTE_VERSION=5204
 QT_IM_MODULE=ibus
 XMODIFIERS=@im=none
 XDG_CURRENT_DESKTOP=GNOME
-GNOME_TERMINAL_SERVICE=:1.75
+GNOME_TERMINAL_SERVICE=:1.95
 VERDI_HOME=/mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2
 SHLVL=4
 MANPATH=:
@@ -331,8 +331,6 @@ VCS_UCLI_STDIN_BLOCKING=1
 FSDB_VHDL_PROTECTED=1
 FSDB_RD_IR_ENABLE=1
 FSDB_SVA_STATUS=1
-SYNOPSYS_SIM=/mnt/vol_NFS_rh003/tools/vcs/R-2020.12-SP2
-DISABLE_LIBRARY_MAP_CHECK=1
 VCS_STOP_SAFE=1
 DVE_SIM_SELECT_LOOP=on
 FLEXLM_BORROWFILE=/home/BONILLA_BLANCO_I_2024_dig/.redhatclon-borrow.txt
@@ -345,88 +343,189 @@ argv[4]=-ucli2Proc
 argv[5]=-ucli
 argv[6]=-l
 argv[7]=/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/verdiLog/sim.log
-264 profile - 100
-          CPU/Mem usage: 0.010 sys,  0.060 user,  284.85M mem
-265 Elapsed time:    0:00:00    Mon May 27 22:38:13 2024
-266 pliAppInit
-267 ndpGetenv(FSDB_FILE): /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
-268 ndpGetenv(FSDB_SVA_STATUS): 1
-269 ndpGetenv(FSDB_VHDL_PROTECTED): 1
-270 [SC]Init: MemoryConsumed=0.00MB ElapsedTime=0hour 0min. 0sec.
-271 FSDB_GATE & FSDB_RTL is disabled.
-272 FSDB_FIELDTYPE is set.
-273 FSDB_ALIAS_ARRAY_ELEM is set to 4294967295.
-274 Enable Parallel Dumping.
-275 pliAppMiscSet: New Sim Round
-276 pliEntryInit
-277 LIBSSCORE=found /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/PLI/lib/LINUXAMD64/libsscore_vcs202012.so through $NOVAS_HOME setting.
-278 FSDB Dumper for VCS, Release Verdi_R-2020.12-SP2, Linux x86_64/64bit, 05/23/2021
-279 (C) 1996 - 2021 by Synopsys, Inc.
-280 sps_tcl_fsdbDumpfile_main at 0
-281 argv[0]: /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
-282 *Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
-283 *Verdi* : Create FSDB file '/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb'
-284 [spi_vcs_vd_ppi_create_root]: no upf option
-285 FSDB dumper cannot dump UPF related power signal ($power_tree): no ppiPowerNetwork.
-286 compile option from '/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/simv.daidir/vcs_rebuild'.
-287   "vcs '-Mupdate' 'z_pipeline_tb.sv' '-full64' '-debug_acc+all+dmptf' '-debug_region+cell+encrypt' '-sverilog' '-l' 'log' '-kdb' 2>&1"
-288 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
-289 *Verdi* : Flush all FSDB Files at 0 ps.
-290 DVDI_is_vir_unload_enabled is enable
-291 FSDB_VCS_ENABLE_NATIVE_VC is enable
-292 sps_tcl_fsdbDumpvars_vd_main
-293 argv[0]: 1
-294 argv[1]: z_pipeline_tb.pipeline_prueba.PC
-295 argv[2]: +all
-296 argv[3]: +trace_process
-297 *Verdi* : Begin traversing the scope (z_pipeline_tb.pipeline_prueba.PC), layer (1).
-298 *Verdi* : Enable +trace_process and +all dumping.
-299 *Verdi* : End of traversing.
-300 pliAppHDL_DumpVarComplete traverse var: profile - 
-          CPU/Mem usage: 0.020 sys,  0.070 user,  381.70M mem
-                   incr: 0.000 sys,  0.000 user,  3.60M mem
-                   accu: 0.000 sys,  0.000 user,  3.60M mem
-              accu incr: 0.000 sys,  0.000 user,  3.60M mem
+262 profile - 100
+          CPU/Mem usage: 0.010 sys,  0.070 user,  284.27M mem
+263 Elapsed time:    0:00:00    Wed May 29 13:15:16 2024
+264 pliAppInit
+265 ndpGetenv(FSDB_FILE): /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
+266 ndpGetenv(FSDB_SVA_STATUS): 1
+267 ndpGetenv(FSDB_VHDL_PROTECTED): 1
+268 [SC]Init: MemoryConsumed=0.00MB ElapsedTime=0hour 0min. 0sec.
+269 FSDB_GATE & FSDB_RTL is disabled.
+270 FSDB_FIELDTYPE is set.
+271 FSDB_ALIAS_ARRAY_ELEM is set to 4294967295.
+272 Enable Parallel Dumping.
+273 pliAppMiscSet: New Sim Round
+274 pliEntryInit
+275 LIBSSCORE=found /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/PLI/lib/LINUXAMD64/libsscore_vcs202012.so through $NOVAS_HOME setting.
+276 FSDB Dumper for VCS, Release Verdi_R-2020.12-SP2, Linux x86_64/64bit, 05/23/2021
+277 (C) 1996 - 2021 by Synopsys, Inc.
+278 sps_tcl_fsdbDumpfile_main at 0
+279 argv[0]: /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
+280 *Verdi* : Create FSDB file '/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb'
+281 [spi_vcs_vd_ppi_create_root]: no upf option
+282 FSDB dumper cannot dump UPF related power signal ($power_tree): no ppiPowerNetwork.
+283 compile option from '/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/simv.daidir/vcs_rebuild'.
+284   "vcs '-Mupdate' 'z_pipeline_tb.sv' '-full64' '-debug_acc+all+dmptf' '-debug_region+cell+encrypt' '-sverilog' '-l' 'log' '-kdb' 2>&1"
+285 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+286 *Verdi* : Flush all FSDB Files at 0 ns.
+287 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+288 *Verdi* : Flush all FSDB Files at 0 ns.
+289 DVDI_is_vir_unload_enabled is enable
+290 FSDB_VCS_ENABLE_NATIVE_VC is enable
+291 sps_tcl_fsdbDumpvars_vd_main
+292 argv[0]: 1
+293 argv[1]: z_pipeline_tb.pipeline_prueba.IMM_GEN_SIGN_EXTENDED
+294 argv[2]: +all
+295 argv[3]: +trace_process
+296 *Verdi* : Begin traversing the scope (z_pipeline_tb.pipeline_prueba.IMM_GEN_SIGN_EXTENDED), layer (1).
+297 *Verdi* : Enable +trace_process and +all dumping.
+298 *Verdi* : End of traversing.
+299 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.070 sys,  0.140 user,  381.87M mem
+                   incr: 0.000 sys,  0.000 user,  3.59M mem
+                   accu: 0.000 sys,  0.000 user,  3.59M mem
+              accu incr: 0.000 sys,  0.000 user,  3.59M mem
 
-          Count usage: 5 var,  5 idcode,  5 callback
-                 incr: 5 var,  5 idcode,  5 callback
-                 accu: 5 var,  5 idcode,  5 callback
-            accu incr: 5 var,  5 idcode,  5 callback
-301 Elapsed time:    0:00:00    Mon May 27 22:38:13 2024
-302 pliAppHDL_DumpVarComplete: profile - 
-          CPU/Mem usage: 0.020 sys,  0.070 user,  382.75M mem
+          Count usage: 2 var,  2 idcode,  2 callback
+                 incr: 2 var,  2 idcode,  2 callback
+                 accu: 2 var,  2 idcode,  2 callback
+            accu incr: 2 var,  2 idcode,  2 callback
+300 Elapsed time:    0:00:26    Wed May 29 13:15:42 2024
+301 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.070 sys,  0.140 user,  382.92M mem
                    incr: 0.000 sys,  0.000 user,  1.05M mem
-                   accu: 0.000 sys,  0.000 user,  4.65M mem
+                   accu: 0.000 sys,  0.000 user,  4.64M mem
               accu incr: 0.000 sys,  0.000 user,  1.05M mem
 
-          Count usage: 5 var,  5 idcode,  5 callback
+          Count usage: 2 var,  2 idcode,  2 callback
                  incr: 0 var,  0 idcode,  0 callback
-                 accu: 5 var,  5 idcode,  5 callback
+                 accu: 2 var,  2 idcode,  2 callback
             accu incr: 0 var,  0 idcode,  0 callback
-303 Elapsed time:    0:00:00    Mon May 27 22:38:13 2024
-304 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
-305 *Verdi* : Flush all FSDB Files at 0 ps.
-306 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
-307 *Verdi* : Flush all FSDB Files at 0 ps.
-308 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
-309 *Verdi* : Flush all FSDB Files at 0 ps.
-310 End of simulation at 0
-311 Memory usage: 401.859 M
-312 Elapsed time:    0:00:31    Mon May 27 22:38:44 2024
-313 Begin FSDB profile info:
-314 FSDB Writer : bc1(3) bcn(2) mtf/stf(0/4)
-FSDB Writer elapsed time : flush(0.012403) io wait(0.000000) theadpool wait(0.000000)
-FSDB Writer cpu time : MT Compression : 0
-315 End FSDB profile info
-316 FSDB closed. Name: /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb Size: 8748
-317 Parallel profile     - ProducerThread:1 ConsumerThread:1 Buffer:64MB
-318                      - BlockUsed:1 Acquire:0 BufferUsed:0
-319                      - Flush:7 Expand:0 ProducerWait:0 ConsumerWait:0
-320                      - MainProducerTime:0.121783977 TotalConsumerTime:0.000000000
-321                      - ElapsedTime:30.394099000
-322 Producer   0 profile - BlockUsed:1 Acquire:0 BufferUsed:0
-323 Consumer   0 profile - Affinity:-1 CPUTime:0.000000000 LifeTime:0.000000000 (-nan%)
-324                      - BlockUsed:1 Acquire:0 BufferUsed:0
-325 SimExit
-326 Elapsed time:    0:00:31    Mon May 27 22:38:44 2024
-327 Sim process exit
+302 Elapsed time:    0:00:26    Wed May 29 13:15:42 2024
+303 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+304 *Verdi* : Flush all FSDB Files at 0 ns.
+305 sps_tcl_fsdbDumpvars_vd_main
+306 argv[0]: 1
+307 argv[1]: z_pipeline_tb.pipeline_prueba.INST_MEM.read_adr
+308 argv[2]: +all
+309 argv[3]: +trace_process
+310 *Verdi* : Dumping the signal (z_pipeline_tb.pipeline_prueba.INST_MEM.read_adr).
+311 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.090 sys,  0.180 user,  384.50M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 2 var,  3 idcode,  3 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+312 Elapsed time:    0:00:42    Wed May 29 13:15:58 2024
+313 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.090 sys,  0.180 user,  384.50M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 2 var,  3 idcode,  3 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+314 Elapsed time:    0:00:42    Wed May 29 13:15:58 2024
+315 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+316 *Verdi* : Flush all FSDB Files at 0 ns.
+317 sps_tcl_fsdbDumpvars_vd_main
+318 argv[0]: 1
+319 argv[1]: z_pipeline_tb.pipeline_prueba.INST_MEM.clk
+320 argv[2]: +all
+321 argv[3]: +trace_process
+322 *Verdi* : Dumping the signal (z_pipeline_tb.pipeline_prueba.INST_MEM.clk).
+323 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.120 sys,  0.210 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  16.90M mem
+                   accu: 0.000 sys,  0.000 user,  16.90M mem
+              accu incr: 0.000 sys,  0.000 user,  16.90M mem
+
+          Count usage: 2 var,  4 idcode,  4 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+324 Elapsed time:    0:00:46    Wed May 29 13:16:02 2024
+325 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.120 sys,  0.210 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  16.90M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 2 var,  4 idcode,  4 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+326 Elapsed time:    0:00:46    Wed May 29 13:16:02 2024
+327 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+328 *Verdi* : Flush all FSDB Files at 0 ns.
+329 sps_tcl_fsdbDumpvars_vd_main
+330 argv[0]: 1
+331 argv[1]: z_pipeline_tb.pipeline_prueba.INST_MEM.instruction
+332 argv[2]: +all
+333 argv[3]: +trace_process
+334 *Verdi* : Dumping the signal (z_pipeline_tb.pipeline_prueba.INST_MEM.instruction).
+335 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.140 sys,  0.240 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 2 var,  5 idcode,  5 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+336 Elapsed time:    0:00:50    Wed May 29 13:16:06 2024
+337 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.140 sys,  0.240 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 2 var,  5 idcode,  5 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+338 Elapsed time:    0:00:50    Wed May 29 13:16:06 2024
+339 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+340 *Verdi* : Flush all FSDB Files at 0 ns.
+341 sps_tcl_fsdbDumpvars_vd_main
+342 argv[0]: 1
+343 argv[1]: z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX
+344 argv[2]: +all
+345 argv[3]: +trace_process
+346 *Verdi* : Begin traversing the scope (z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX), layer (1).
+347 *Verdi* : Enable +trace_process and +all dumping.
+348 *Verdi* : End of traversing.
+349 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.170 sys,  0.270 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 8 var,  11 idcode,  11 callback
+                 incr: 6 var,  6 idcode,  6 callback
+                 accu: 6 var,  6 idcode,  6 callback
+            accu incr: 6 var,  6 idcode,  6 callback
+350 Elapsed time:    0:01:01    Wed May 29 13:16:17 2024
+351 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.170 sys,  0.270 user,  401.41M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 8 var,  11 idcode,  11 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 6 var,  6 idcode,  6 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+352 Elapsed time:    0:01:01    Wed May 29 13:16:17 2024
+353 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+354 *Verdi* : Flush all FSDB Files at 0 ns.
+355 sps_tcl_fsdbDumpflush_vd_main at 202000 : N/A(0)
+356 *Verdi* : Flush all FSDB Files at 202,000 ns.

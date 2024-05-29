@@ -24,8 +24,8 @@ mostrar_data_mem(1);
 
 #2
 RST<=1'b1;
-$readmemh("data_initial.mem", pipeline_prueba.DATA_MEM.memory);
-$readmemb("inst_initial.mem", pipeline_prueba.INST_MEM.memory);
+$readmemh("data_initial", pipeline_prueba.DATA_MEM.memory);
+$readmemb("inst_initial", pipeline_prueba.INST_MEM.memory);
 
 
 $display("\nACTIVACION DE RESET\n");

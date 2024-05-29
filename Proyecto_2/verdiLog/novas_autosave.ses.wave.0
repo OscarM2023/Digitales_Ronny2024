@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_R-2020.12-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 25 1272 311 100 65
+viewPort 0 25 1272 309 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 10000.000000
-cursor 249.76873265495
+zoom 0.000000 64000.000000
+cursor 1000.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 5
+markerPos 6
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,13 +45,14 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
-addGroup "PC"
+addGroup "FORWARD_A_MUX"
 activeDirFile "" "/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb"
-addSignal -h 15 /z_pipeline_tb/pipeline_prueba/PC/clk
-addSignal -h 15 /z_pipeline_tb/pipeline_prueba/PC/rst
-addSignal -h 15 /z_pipeline_tb/pipeline_prueba/PC/STALL
-addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/PC/IN[31:0]
-addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/PC/OUT[31:0]
+addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/SEL[1:0]
+addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN0[31:0]
+addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN1[31:0]
+addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN2[31:0]
+addSignal -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN3[31:0]
+addSignal -expanded -h 15 -UNSIGNED -HEX /z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT[31:0]
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

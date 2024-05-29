@@ -6,10 +6,10 @@ module mux41 #(parameter WIDTH=32) (
 
 always_comb begin
 case (SEL)
-    00: OUT=IN0;
-    01: OUT=IN1;
-    10: OUT=IN2;
-    11: OUT=IN3;
+    2'b00: OUT=IN0;
+    2'b01: OUT=IN1;
+    2'b10: OUT=IN2;
+    2'b11: OUT=IN3;
 endcase
 end
 

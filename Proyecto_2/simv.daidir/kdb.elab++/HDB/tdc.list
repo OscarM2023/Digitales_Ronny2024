@@ -1,12 +1,13 @@
 PC.sv
-XSPRAMLP_2048X32_M8P.sv
 adder.sv
 alu.sv
 and1.sv
 branch_comp.sv
 control_unit.sv
+data_mem.sv
 forwarding_unit.sv
 hazard_unit.sv
+inst_mem.sv
 mux21.sv
 mux41.sv
 pipe_ex_mem.sv

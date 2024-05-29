@@ -26,11 +26,11 @@ fdb_campaign =
 fdb_tool = 
 [hb]
 postSimFile = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
-syncTime = 0
+syncTime = 1000
 viewport = 0 0 1920 805 0 0 283 1270
-activeNode = "z_pipeline_tb"
-activeScope = "z_pipeline_tb"
-activeFile = "z_pipeline_tb.sv"
+activeNode = "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
+activeScope = "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
+activeFile = "mux41.sv#inc___vcs_unit__1__10#"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
@@ -49,24 +49,28 @@ safetyAwareAnnot = True
 amsAnnot = True
 DnDtraceCrossHierOnly = True
 leadingZero = False
-signalPane = False
+signalPane = True
 SourceVerticalScrollLines = 5
-Scope1 = "z_pipeline_tb"
+Scope1 = "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
+Scope2 = "z_pipeline_tb.pipeline_prueba"
+Scope3 = "z_pipeline_tb.pipeline_prueba.FORWARDING_UNIT"
+Scope4 = "z_pipeline_tb"
+Scope5 = "z_pipeline_tb.pipeline_prueba.INST_MEM"
 sdfCheckUndef = FALSE
 simFlow = FALSE
 [hb.design]
 importCmd = "-simflow" "-dbdir" "./simv.daidir" 
 invokeDir = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2
 [hb.sourceTab.1]
-scope = z_pipeline_tb
-File = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/z_pipeline_tb.sv
+scope = z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX
+File = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/mux41.sv#inc___vcs_unit__1__10#
 Line = 1
 [nMemoryManager]
 WaveformFile = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
 UserActionNum = 0
 nMemWindowNum = 0
 [wave.0]
-viewPort = 0 25 1272 311 100 65
+viewPort = 0 25 1272 309 100 65
 primaryWindow = TRUE
 SessionFile = /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE

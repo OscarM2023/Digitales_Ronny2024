@@ -5,78 +5,6 @@
         "module",
         1
     ],
-    "adder": [
-        "adder",
-        "Qq4Ev",
-        "module",
-        2
-    ],
-    "alu": [
-        "alu",
-        "C26kq",
-        "module",
-        3
-    ],
-    "and1": [
-        "and1",
-        "Ug1Zg",
-        "module",
-        4
-    ],
-    "branch_comp": [
-        "branch_comp",
-        "Ajvht",
-        "module",
-        5
-    ],
-    "control_unit": [
-        "control_unit",
-        "PDti6",
-        "module",
-        6
-    ],
-    "forwarding_unit": [
-        "forwarding_unit",
-        "T1CvT",
-        "module",
-        7
-    ],
-    "hazard_unit": [
-        "hazard_unit",
-        "g5vFt",
-        "module",
-        8
-    ],
-    "mux21": [
-        "mux21",
-        "DxvJR",
-        "module",
-        9
-    ],
-    "mux21_0000": [
-        "mux21_0000",
-        "yabdH",
-        "module",
-        10
-    ],
-    "mux41": [
-        "mux41",
-        "MF0uQ",
-        "module",
-        11
-    ],
-    "registers": [
-        "registers",
-        "mRE6F",
-        "module",
-        12
-    ],
-    "signextend": [
-        "signextend",
-        "Hg4zy",
-        "module",
-        13
-    ],
     "z_pipeline_tb": [
         "z_pipeline_tb",
         "fxt3U",
@@ -88,11 +16,5 @@
         "amcQw",
         "module",
         15
-    ],
-    "XSPRAMLP_2048X32_M8P_DFF": [
-        "XSPRAMLP_2048X32_M8P_DFF",
-        "Dagb4",
-        "udp",
-        16
     ]
 }

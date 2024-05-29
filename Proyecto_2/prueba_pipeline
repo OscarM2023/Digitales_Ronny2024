@@ -1,5 +1,5 @@
 $date
-	Mon May 27 22:37:23 2024
+	Wed May 29 13:16:20 2024
 $end
 
 $version
@@ -7,10 +7,10 @@ $version
 $end
 
 $timescale
-	1ps
+	1ns
 $end
 
-$comment Csum: 1 a17df4984484ee8e $end
+$comment Csum: 1 24c2bb43aa5e961b $end
 
 
 $scope module z_pipeline_tb $end
@@ -85,105 +85,42 @@ $var wire 32 ^ data_read_to_data_mem_skip_mux [31:0] $end
 $var wire 32 _ result_op_to_data_mem_skip_mux [31:0] $end
 $var wire 5 ` mem_wb_a_rd_to_registers [4:0] $end
 $var wire 32 a data_mem_skip_mux_out_to_registers [31:0] $end
+$var reg 11 b by_byte_addressing_to_by_word [10:0] $end
+$var reg 5 c add_reg_1 [4:0] $end
+$var reg 5 d add_reg_2 [4:0] $end
+$var reg 5 e ad_reg_rd [4:0] $end
+$var reg 7 f op_code [6:0] $end
 
 $scope module PC_MUX $end
 $var wire 1 9 SEL $end
 $var wire 32 ' IN0 [31:0] $end
 $var wire 32 . IN1 [31:0] $end
-$var reg 32 b OUT [31:0] $end
+$var reg 32 g OUT [31:0] $end
 $upscope $end
 
 
 $scope module PC $end
-$var reg 32 c OUT [31:0] $end
+$var reg 32 h OUT [31:0] $end
 $var wire 1 $ clk $end
 $var wire 1 # rst $end
-$var wire 1 ; STALL $end
+$var wire 1 : STALL $end
+$var wire 1 i PCWRITE $end
 $var wire 32 % IN [31:0] $end
 $upscope $end
 
 
 $scope module INST_MEM $end
-$var wire 32 d Q [31:0] $end
-$var wire 32 e D [31:0] $end
-$var wire 11 f A [10:0] $end
-$var wire 1 $ CLK $end
-$var wire 1 g CEn $end
-$var wire 1 h WEn $end
-$var wire 1 i SL $end
-$var wire 1 j RDY $end
-$var wire 32 k QI [31:0] $end
-$var wire 32 l D_ [31:0] $end
-$var wire 11 m A_ [10:0] $end
-$var wire 1 n CLK_ $end
-$var wire 1 o CEn_ $end
-$var wire 1 p WEn_ $end
-$var wire 1 q SL_ $end
-$var integer 32 r i $end
-$var wire 1 s SL_OK $end
-$var wire 1 t enable $end
-$var reg 1 u rt $end
-$var wire 1 v enableMem $end
-$var wire 1 w WEnB $end
-$var wire 1 x cleanWrite $end
-$var wire 1 y possRead $end
-$var wire 1 z cleanWriteN $end
-$var wire 1 { RW $end
-$var reg 1 | NOTIFY_REG $end
-$var reg 1 } NOTIFY_A $end
-$var reg 1 ~ NOTIFY_WEn $end
-$var wire 1 "! T_OK_Q $end
-$var wire 1 "" CLKD $end
-$var wire 1 "# CLKDZ $end
-$var wire 1 "$ CSP $end
-$var wire 1 "% RX $end
-$var wire 1 "& RY $end
-$var wire 1 "' RDYi $end
-$var wire 1 "( RDY_ $end
-$var wire 1 ") T_OK_R $end
-$var wire 1 "* T_OK_A $end
-$var wire 1 "+ T_OK_QI $end
-$var wire 1 ", RWL $end
-$var wire 1 "- TOK $end
-$var wire 1 ". NRWL $end
-
-$scope module sub1 $end
-$var wire 32 k QI [31:0] $end
-$var wire 32 l D [31:0] $end
-$var wire 11 m A [10:0] $end
-$var wire 1 n CLK $end
-$var wire 1 y possRead $end
-$var wire 1 x cleanWrite $end
-$var wire 1 "! Q_OK $end
-$var reg 32 "/ QR [31:0] $end
-$var reg 32 "0 D_X [31:0] $end
-$var integer 32 "1 addr_cnt $end
-$upscope $end
-
-
-$scope module sub2 $end
-$var wire 1 n CLK $end
-$var wire 1 "2 CLKD $end
-$var wire 1 "3 CLKDZ $end
-$var wire 1 "4 CLK_ $end
-$upscope $end
-
-
-$scope module sub3 $end
-$var wire 1 "$ CLK $end
-$var wire 1 p WEn $end
-$var wire 1 "5 RX $end
-$var wire 1 "6 RY $end
-$var wire 1 "7 CLK_ $end
-$var wire 1 "8 WEn_ $end
-$upscope $end
-
+$var wire 1 $ clk $end
+$var wire 1 # rst $end
+$var wire 11 j read_adr [10:0] $end
+$var reg 32 k instruction [31:0] $end
+$var integer 32 l i $end
 $upscope $end
 
 
 $scope module PC_ADDER $end
 $var wire 32 & A [31:0] $end
-$var wire 32 "9 B [31:0] $end
+$var wire 32 m B [31:0] $end
 $var wire 32 ' Q [31:0] $end
 $upscope $end
 
@@ -195,8 +132,8 @@ $var wire 1 9 FLUSH $end
 $var wire 1 : STALL $end
 $var wire 32 & PC_IN [31:0] $end
 $var wire 32 ( INSTRUCTION_IN [31:0] $end
-$var reg 32 ": PC_OUT [31:0] $end
-$var reg 32 "; INSTRUCTION_OUT [31:0] $end
+$var reg 32 n PC_OUT [31:0] $end
+$var reg 32 o INSTRUCTION_OUT [31:0] $end
 $upscope $end
 
 
@@ -204,8 +141,8 @@ $scope module REGISTERS $end
 $var wire 1 $ clk $end
 $var wire 1 # rst $end
 $var wire 1 ] REGWRITE $end
-$var wire 5 "< ADR_REG1 [4:0] $end
-$var wire 5 "= ADR_REG2 [4:0] $end
+$var wire 5 p ADR_REG1 [4:0] $end
+$var wire 5 q ADR_REG2 [4:0] $end
 $var wire 5 ` ADR_WR_REG [4:0] $end
 $var wire 32 a WR_DATA [31:0] $end
 $var wire 32 * REG_DATA1 [31:0] $end
@@ -220,7 +157,7 @@ $upscope $end
 $scope module BRANCH_COMPARE $end
 $var wire 32 * IN1 [31:0] $end
 $var wire 32 + IN2 [31:0] $end
-$var reg 1 "> OUT $end
+$var reg 1 r OUT $end
 $upscope $end
 
 
@@ -233,19 +170,20 @@ $upscope $end
 
 $scope module IMM_GEN_SIGN_EXTENDED $end
 $var wire 32 ) IN [31:0] $end
-$var reg 32 "? OUT [31:0] $end
+$var reg 32 s OUT [31:0] $end
 $upscope $end
 
 
 $scope module CONTROL_UNIT $end
 $var wire 32 ) INSTRUCTION [31:0] $end
-$var reg 4 "@ ALUOP [3:0] $end
-$var reg 1 "A PCSRC $end
-$var reg 1 "B ALUSRC $end
-$var reg 1 "C MEMTOREAD $end
-$var reg 1 "D MEMWRITE $end
-$var reg 1 "E MEMTOREG $end
-$var reg 1 "F REGWRITE $end
+$var reg 4 t ALUOP [3:0] $end
+$var reg 1 u PCSRC $end
+$var reg 1 v ALUSRC $end
+$var reg 1 w MEMTOREAD $end
+$var reg 1 x MEMWRITE $end
+$var reg 1 y MEMTOREG $end
+$var reg 1 z REGWRITE $end
+$var reg 4 { funct7_funct3 [3:0] $end
 $upscope $end
 
 
@@ -258,72 +196,71 @@ $upscope $end
 
 $scope module STALL_CONTROL_MUX $end
 $var wire 1 1 SEL $end
-$var wire 9 "G IN0 [8:0] $end
-$var wire 9 "H IN1 [8:0] $end
-$var reg 9 "I OUT [8:0] $end
+$var wire 9 | IN0 [8:0] $end
+$var wire 9 } IN1 [8:0] $end
+$var reg 9 ~ OUT [8:0] $end
 $upscope $end
 
 
 $scope module PIPE_ID_EX $end
 $var wire 1 $ clk $end
 $var wire 1 # rst $end
-$var wire 4 "J ALUOP_IN [3:0] $end
-$var wire 1 "K ALUSRC_IN $end
-$var wire 1 "L REGWRITE_IN $end
-$var wire 1 "M MEMTOREG_IN $end
-$var wire 1 "N MEMWRITE_IN $end
-$var wire 1 "O MEMREAD_IN $end
-$var wire 5 "P ARS1_IN [4:0] $end
-$var wire 5 "Q ARS2_IN [4:0] $end
-$var wire 5 "R ARD_IN [4:0] $end
+$var wire 4 "! ALUOP_IN [3:0] $end
+$var wire 1 "" ALUSRC_IN $end
+$var wire 1 "# REGWRITE_IN $end
+$var wire 1 "$ MEMTOREG_IN $end
+$var wire 1 "% MEMWRITE_IN $end
+$var wire 1 "& MEMREAD_IN $end
+$var wire 5 "' ARS1_IN [4:0] $end
+$var wire 5 "( ARS2_IN [4:0] $end
+$var wire 5 ") ARD_IN [4:0] $end
 $var wire 32 * RS1_IN [31:0] $end
 $var wire 32 + RS2_IN [31:0] $end
 $var wire 32 / IMMEDIATE_IN [31:0] $end
-$var reg 4 "S ALUOP_OUT [3:0] $end
-$var reg 1 "T ALUSRC_OUT $end
-$var reg 1 "U REGWRITE_OUT $end
-$var reg 1 "V MEMTOREG_OUT $end
-$var reg 1 "W MEMWRITE_OUT $end
-$var reg 1 "X MEMREAD_OUT $end
-$var reg 5 "Y ARS1_OUT [4:0] $end
-$var reg 5 "Z ARS2_OUT [4:0] $end
-$var reg 5 "[ ARD_OUT [4:0] $end
-$var reg 32 "\ RS1_OUT [31:0] $end
-$var reg 32 "] RS2_OUT [31:0] $end
-$var reg 32 "^ IMMEDIATE_OUT [31:0] $end
+$var reg 4 "* ALUOP_OUT [3:0] $end
+$var reg 1 "+ ALUSRC_OUT $end
+$var reg 1 ", REGWRITE_OUT $end
+$var reg 1 "- MEMTOREG_OUT $end
+$var reg 1 ". MEMWRITE_OUT $end
+$var reg 1 "/ MEMREAD_OUT $end
+$var reg 5 "0 ARS1_OUT [4:0] $end
+$var reg 5 "1 ARS2_OUT [4:0] $end
+$var reg 5 "2 ARD_OUT [4:0] $end
+$var reg 32 "3 RS1_OUT [31:0] $end
+$var reg 32 "4 RS2_OUT [31:0] $end
+$var reg 32 "5 IMMEDIATE_OUT [31:0] $end
 $upscope $end
 
 
 $scope module HAZARD_UNIT $end
 $var wire 1 E MEMREAD_ID_EX $end
 $var wire 1 , BEQ_WRONG_PRED $end
-$var wire 5 "< ARS1_IF_ID [4:0] $end
-$var wire 5 "= ARS2_IF_ID [4:0] $end
+$var wire 5 "6 ARS1_IF_ID [4:0] $end
+$var wire 5 "7 ARS2_IF_ID [4:0] $end
 $var wire 5 M ARD_ID_EX [4:0] $end
-$var wire 7 "_ OP_CODE [6:0] $end
-$var reg 1 "` STALL $end
-$var reg 1 "a MUX_SEL $end
-$var reg 1 "b PCWRITE $end
+$var wire 7 "8 OP_CODE [6:0] $end
+$var reg 1 "9 STALL $end
+$var reg 1 ": MUX_SEL $end
 $upscope $end
 
 
 $scope module FORWARD_A_MUX $end
 $var wire 2 S SEL [1:0] $end
 $var wire 32 I IN0 [31:0] $end
-$var wire 32 X IN1 [31:0] $end
-$var wire 32 a IN2 [31:0] $end
-$var wire 32 "c IN3 [31:0] $end
-$var reg 32 "d OUT [31:0] $end
+$var wire 32 a IN1 [31:0] $end
+$var wire 32 X IN2 [31:0] $end
+$var wire 32 "; IN3 [31:0] $end
+$var reg 32 "< OUT [31:0] $end
 $upscope $end
 
 
 $scope module FORWARD_B_MUX $end
 $var wire 2 T SEL [1:0] $end
 $var wire 32 J IN0 [31:0] $end
-$var wire 32 X IN1 [31:0] $end
-$var wire 32 a IN2 [31:0] $end
-$var wire 32 "e IN3 [31:0] $end
-$var reg 32 "f OUT [31:0] $end
+$var wire 32 a IN1 [31:0] $end
+$var wire 32 X IN2 [31:0] $end
+$var wire 32 "= IN3 [31:0] $end
+$var reg 32 "> OUT [31:0] $end
 $upscope $end
 
 
@@ -331,7 +268,7 @@ $scope module ALUSRC_MUX $end
 $var wire 1 D SEL $end
 $var wire 32 P IN0 [31:0] $end
 $var wire 32 N IN1 [31:0] $end
-$var reg 32 "g OUT [31:0] $end
+$var reg 32 "? OUT [31:0] $end
 $upscope $end
 
 
@@ -339,7 +276,7 @@ $scope module ALU $end
 $var wire 32 O A [31:0] $end
 $var wire 32 Q B [31:0] $end
 $var wire 4 C ALU_OPERATION [3:0] $end
-$var reg 32 "h ALU_RESULT [31:0] $end
+$var reg 32 "@ ALU_RESULT [31:0] $end
 $upscope $end
 
 
@@ -352,12 +289,12 @@ $var wire 1 H REGWRITE_IN $end
 $var wire 32 R RESULTOP_IN [31:0] $end
 $var wire 32 P WRDATA_IN [31:0] $end
 $var wire 5 M ARD_IN [4:0] $end
-$var reg 1 "i MEMWRITE_OUT $end
-$var reg 1 "j MEMTOREG_OUT $end
-$var reg 1 "k REGWRITE_OUT $end
-$var reg 32 "l RESULTOP_OUT [31:0] $end
-$var reg 32 "m WRDATA_OUT [31:0] $end
-$var reg 5 "n ARD_OUT [4:0] $end
+$var reg 1 "A MEMWRITE_OUT $end
+$var reg 1 "B MEMTOREG_OUT $end
+$var reg 1 "C REGWRITE_OUT $end
+$var reg 32 "D RESULTOP_OUT [31:0] $end
+$var reg 32 "E WRDATA_OUT [31:0] $end
+$var reg 5 "F ARD_OUT [4:0] $end
 $upscope $end
 
 
@@ -368,86 +305,19 @@ $var wire 5 K ARS1 [4:0] $end
 $var wire 5 L ARS2 [4:0] $end
 $var wire 1 W REGWRITE_EX_MEM $end
 $var wire 1 ] REGWRITE_MEM_WB $end
-$var reg 2 "o FORWARD_A [1:0] $end
-$var reg 2 "p FORWARD_B [1:0] $end
+$var reg 2 "G FORWARD_A [1:0] $end
+$var reg 2 "H FORWARD_B [1:0] $end
 $upscope $end
 
 
 $scope module DATA_MEM $end
-$var wire 32 "q Q [31:0] $end
-$var wire 32 Y D [31:0] $end
-$var wire 11 "r A [10:0] $end
-$var wire 1 $ CLK $end
-$var wire 1 "s CEn $end
-$var wire 1 "t WEn $end
-$var wire 1 "u SL $end
-$var wire 1 "v RDY $end
-$var wire 32 "w QI [31:0] $end
-$var wire 32 "x D_ [31:0] $end
-$var wire 11 "y A_ [10:0] $end
-$var wire 1 "z CLK_ $end
-$var wire 1 "{ CEn_ $end
-$var wire 1 "| WEn_ $end
-$var wire 1 "} SL_ $end
-$var integer 32 "~ i $end
-$var wire 1 #! SL_OK $end
-$var wire 1 #" enable $end
-$var reg 1 ## rt $end
-$var wire 1 #$ enableMem $end
-$var wire 1 #% WEnB $end
-$var wire 1 #& cleanWrite $end
-$var wire 1 #' possRead $end
-$var wire 1 #( cleanWriteN $end
-$var wire 1 #) RW $end
-$var reg 1 #* NOTIFY_REG $end
-$var reg 1 #+ NOTIFY_A $end
-$var reg 1 #, NOTIFY_WEn $end
-$var wire 1 #- T_OK_Q $end
-$var wire 1 #. CLKD $end
-$var wire 1 #/ CLKDZ $end
-$var wire 1 #0 CSP $end
-$var wire 1 #1 RX $end
-$var wire 1 #2 RY $end
-$var wire 1 #3 RDYi $end
-$var wire 1 #4 RDY_ $end
-$var wire 1 #5 T_OK_R $end
-$var wire 1 #6 T_OK_A $end
-$var wire 1 #7 T_OK_QI $end
-$var wire 1 #8 RWL $end
-$var wire 1 #9 TOK $end
-$var wire 1 #: NRWL $end
-
-$scope module sub1 $end
-$var wire 32 "w QI [31:0] $end
-$var wire 32 "x D [31:0] $end
-$var wire 11 "y A [10:0] $end
-$var wire 1 "z CLK $end
-$var wire 1 #' possRead $end
-$var wire 1 #& cleanWrite $end
-$var wire 1 #- Q_OK $end
-$var reg 32 #; QR [31:0] $end
-$var reg 32 #< D_X [31:0] $end
-$var integer 32 #= addr_cnt $end
-$upscope $end
-
-
-$scope module sub2 $end
-$var wire 1 "z CLK $end
-$var wire 1 #> CLKD $end
-$var wire 1 #? CLKDZ $end
-$var wire 1 #@ CLK_ $end
-$upscope $end
-
-
-$scope module sub3 $end
-$var wire 1 #0 CLK $end
-$var wire 1 "| WEn $end
-$var wire 1 #A RX $end
-$var wire 1 #B RY $end
-$var wire 1 #C CLK_ $end
-$var wire 1 #D WEn_ $end
-$upscope $end
-
+$var wire 1 $ clk $end
+$var wire 1 # rst $end
+$var wire 1 U wrt_en $end
+$var wire 11 "I address [10:0] $end
+$var wire 32 Y write_data [31:0] $end
+$var reg 32 "J read_data [31:0] $end
+$var integer 32 "K i $end
 $upscope $end
 
 
@@ -459,19 +329,19 @@ $var wire 1 W REGWRITE_IN $end
 $var wire 32 [ MEMDATA_IN [31:0] $end
 $var wire 32 X RESULTOP_IN [31:0] $end
 $var wire 5 Z ARD_IN [4:0] $end
-$var reg 1 #E MEMTOREG_OUT $end
-$var reg 1 #F REGWRITE_OUT $end
-$var reg 32 #G MEMDATA_OUT [31:0] $end
-$var reg 32 #H RESULTOP_OUT [31:0] $end
-$var reg 5 #I ARD_OUT [4:0] $end
+$var reg 1 "L MEMTOREG_OUT $end
+$var reg 1 "M REGWRITE_OUT $end
+$var reg 32 "N MEMDATA_OUT [31:0] $end
+$var reg 32 "O RESULTOP_OUT [31:0] $end
+$var reg 5 "P ARD_OUT [4:0] $end
 $upscope $end
 
 
 $scope module MEM_TO_REG_MUX $end
 $var wire 1 \ SEL $end
-$var wire 32 ^ IN0 [31:0] $end
-$var wire 32 _ IN1 [31:0] $end
-$var reg 32 #J OUT [31:0] $end
+$var wire 32 _ IN0 [31:0] $end
+$var wire 32 ^ IN1 [31:0] $end
+$var reg 32 "Q OUT [31:0] $end
 $upscope $end
 
 $upscope $end
@@ -482,234 +352,147 @@ $enddefinitions $end
 
 #0
 $dumpvars
-x"K
-x"T
-zg
-xo
-0"
-1"s
-1"{
-x#+
-x#*
-x#,
-x#:
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "w
-0#)
-x#8
-z"u
-x"}
-x#!
-x#9
-x#6
-x#-
-x#7
-x#%
-0#&
-1#(
-0#"
-0#$
-0#'
-0##
-x"O
-x"X
-x"M
-x"V
-x"N
-x"W
-x}
-x|
-x~
-x".
-x"j
-x"i
-x"k
-x#E
-x#F
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx k
-x"L
-x"U
-0!
-0{
-x",
-zi
-xq
-xs
-x"-
-x"*
-x"!
+xv
+x""
 x"+
-0w
-bxxxx 0
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx R
-0x
-1z
+xr
+0"
+x"&
+x"/
+xw
+xy
+x"$
+x"-
+xx
+x"%
+x".
+0":
+xu
+zi
+x"B
+x"A
+x"C
+x"L
+x"M
+xz
+x"#
+x",
+0!
+0"9
+x9
 x4
 x5
 x7
 x6
+x3
 x8
-bxxxxxxxxx <
-xt
-0v
 xV
-x;
+xU
+xW
+z;
 0:
+xD
+xE
 xG
 xF
 xH
+x\
+x]
 x>
 x?
 xA
 x@
 xB
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx %
-0y
-0u
-bxxxxxxxxxxx f
-bxxxx "J
-bxxxx "S
-bxxxxx "[
-bxxxxx "Y
-bxxxxx "Z
-bxxxxxxxxxxx m
-bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz e
-bxxxxxxxxxxx "r
-bxxxxxxxxxxx "y
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "x
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #<
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "q
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #;
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #=
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "~
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx l
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "0
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "^
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ";
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #G
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx c
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ":
-bxxxxx "n
-bxxxxx #I
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #H
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx d
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "/
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "l
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "\
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "]
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "m
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "1
+x,
+0#
+01
+bxxxxx p
+bxxxxx q
+bxxxx t
+bxxxx "!
+bxxxx "*
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "?
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "@
+bxxxxx "2
+bxxxxx "6
+bxxxxx "'
+bxxxxx "0
+bxxxxx "7
+bxxxxx "(
+bxxxxx "1
+b00000000000000000000000000000100 m
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "K
+b00 "G
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "<
+b00 "H
+b00000000000000000000000000000000 "=
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ">
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "5
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx s
+bxxxxxxxxx |
+b000000000 }
+b00000000000000000000000000000000 ";
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx o
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx k
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "N
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "Q
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx g
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx n
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx h
+bxxxxx "F
+bxxxxx "P
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "O
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "D
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "3
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "4
+bxxxxxxxxx ~
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "E
+bxxxxx c
+bxxxxx d
+bxxxxxxxxxxx "I
+bxxxx 0
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx R
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Q
+bxxxxxxxxxxx b
+bxxxxxxxxx <
 bxxxxxxxxx 2
 bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx [
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Y
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (
-bxxxx =
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx r
-bxxxxx "P
-bxxxxx "Q
-bxxxxx "R
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx b
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "?
-x"B
-x"C
-x"E
-x"D
-x"A
-x"F
-bxxxx "@
-bxxxxxxxxx "I
-0"a
-x"b
-0"`
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "d
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "f
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "g
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "h
-b00 "o
-b00 "p
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #J
-bxxxxx "<
-bxxxxx "=
-bxxxxxxx "_
-1h
-1p
-1"8
-x"t
-x"|
-x#D
-0n
-0"4
-0"z
-0#@
-1"$
-1"7
-x"(
-0"2
-0""
-0#>
-0#.
-0"3
-0"#
-0#?
-0#/
-x"5
-x"%
-x"6
-x"&
-1#0
-1#C
-x#4
-x#A
-x#1
-x#B
-x#2
-x">
-x9
-0$
-xU
-x")
-x#5
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx )
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx &
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx X
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx '
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx .
-0#
-x]
-bxxxxx `
 bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx a
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx +
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx /
-x3
-x,
-01
-xE
-bxxxxx M
-b00 S
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx I
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx O
-b00 T
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx J
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx P
-xD
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx N
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Q
-bxxxx C
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ^
 bxxxxx Z
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx X
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Y
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx O
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx P
+b00 S
+b00 T
+bxxxx {
+bxxxxx M
 bxxxxx K
 bxxxxx L
-xW
-x\
-bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ^
+bxxxx C
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx N
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx I
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx J
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx .
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx /
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx )
+bxxxxx `
+bxxxx =
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx '
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx %
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx &
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx l
+bxxxxxxxxxxx j
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "J
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx +
 bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx _
-xj
-x"'
-x"v
-x#3
-b00000000000000000000000000000100 "9
-bxxxxxxxxx "G
-b000000000 "H
-b00000000000000000000000000000000 "c
-b00000000000000000000000000000000 "e
+bxxxxx e
+bxxxxxxx f
+bxxxxx ")
+bxxxxxxx "8
+0$
 $end

@@ -336,6 +336,8 @@ Wave_comment_string_font = -f COURIER12 -c ID_RED5
 HB_designTreeFont = *-adobe-courier-medium-r-*-*-12-*-*-*-*-*-iso8859-*
 Text_font = COURIER12
 nMemory_font = Fixed 14
+Wave_getsignal_form_font = -f COURIER12
+Text_annotFont = Helvetica_M_R_10
 [OtherEditor]
 cmd1 = "xterm -font 9x15 -fg black -bg gray -e"
 name = "vi"
@@ -380,9 +382,10 @@ saveWaveformStat = TRUE
 savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
-QwWarnMsgDlg = 650,320,600,250
 qWaveSignalDialog = 550,219,800,479
-QwUserAskDlg = 798,400,324,134
+Verdi_1_timeUnitDlg = 743,396,433,86
+QwWarnMsgDlg = 650,468,600,250
+QwUserAskDlg = 797,352,324,134
 [Relationship]
 hideRecursiceNode = FALSE
 [Safety]
@@ -588,7 +591,7 @@ pdmlMacro = ID_BLACK
 font = COURIER12
 annotFont = Helvetica_M_R_10
 [Text.1]
-viewport = -10 19 1920 805 45
+viewport = 0 0 1920 805 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -680,27 +683,27 @@ DefaultLogTimeUnit = "1.000000ns"
 parRuleSets = "/mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/VIA/Apps/PredefinedParRules/par_rule_OVM.rc /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/VIA/Apps/PredefinedParRules/par_rule_UVM.rc /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/VIA/Apps/Prede\
 finedParRules/par_rule_LP.rc /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/share/VIA/Apps/PredefinedParRules/par_rule_VCS.rc "
 [VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column0]
-name = Reporter
-width = 60
-visualIndex = 2
-isHidden = FALSE
-isUserChangeColumnVisible = FALSE
-[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column1]
 name = Type
 width = 60
 visualIndex = 4
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column2]
+[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column1]
 name = Message
 width = 2000
 visualIndex = 5
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
-[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column3]
+[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column2]
 name = Time
 width = 60
 visualIndex = 0
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column3]
+name = Severity
+width = 60
+visualIndex = 1
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
 [VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column4]
@@ -710,9 +713,9 @@ visualIndex = 3
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
 [VIA.interactiveDebug.preference.vgifColumnSettingRC.setting0.column5]
-name = Severity
+name = Reporter
 width = 60
-visualIndex = 1
+visualIndex = 2
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
 [VIA.oneSearch.preference]
@@ -723,28 +726,28 @@ isOneSearchVisible = TRUE
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0]
 parRuleSets = ""
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column0]
+name = Message
+width = 2000
+visualIndex = 4
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
 name = Time
 width = 60
 visualIndex = 0
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
 name = Code
 width = 60
 visualIndex = 2
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
 name = Type
 width = 60
 visualIndex = 3
 isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
-name = Message
-width = 2000
-visualIndex = 4
-isHidden = FALSE
 isUserChangeColumnVisible = FALSE
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
 name = Severity
@@ -832,6 +835,9 @@ ShowDeltaTime = TRUE
 WaveExtendLastTick = TRUE
 displayMessageLabelOnly = TRUE
 AutoApplySeverityColor = TRUE
+scope_to_save_with_macro
+open_file_dir
+open_rc_file_dir
 getSignalForm = 550 182 800 479 164 381 390 89
 viewPort = 0 25 1272 309 100 65
 legendBackground = -c ID_BLACK
@@ -973,7 +979,6 @@ displayDeltaY = FALSE
 signal_rc_abspath = TRUE
 signal_rc_no_natural_bus_range = FALSE
 save_scope_with_macro = FALSE
-scope_to_save_with_macro
 FitAnaByBusSize = FALSE
 overlay_added_analog_signals = FALSE
 case_insensitive = FALSE
@@ -999,8 +1004,6 @@ printSignature = {%f %h %t} {}
 curveWindow_Drag&Drop_Mode = TRUE
 RecentFile1 = "\"/mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb\""
 open_file_time_range = FALSE
-open_file_dir
-open_rc_file_dir
 legend_window_font = -f COURIER12 -c ID_CYAN5
 value_window_font = -f COURIER12 -c ID_CYAN5
 curve_window_font = -f COURIER12 -c ID_CYAN5
@@ -1092,6 +1095,7 @@ HvpMergeTool =
 ShowMergeMenuItem = FALSE
 fsmScoreMode = transition
 [eco]
+NameRule = 
 IsFreezeSilicon = FALSE
 cellQuantityManagement = FALSE
 ManageMode = INSTANCE_NAME
@@ -1099,7 +1103,6 @@ SpareCellsPinsManagement = TRUE
 LogCommitReport = FALSE
 InputPinStatus = 1
 OutputPinStatus = 2
-NameRule = 
 RevisedComponentColor = ID_BLUE5
 SpareCellColor = ID_RED5
 UserName = BONILLA_BLANCO_I_2024_dig

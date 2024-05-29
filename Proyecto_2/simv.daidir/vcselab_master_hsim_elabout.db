@@ -742,7 +742,7 @@ fHsimSchedMinput                   	0
 fHsimSchedSeqPrim                  	0
 fHsimSchedSelectFanout             	0
 fHsimSchedSelectFanoutDebug        	0
-fSpecifyInDesign                   	1
+fSpecifyInDesign                   	0
 fFgpDynamicReadOn                  	0
 fHsCgOptAllUc                      	0
 fHsimXmrRepl                       	0
