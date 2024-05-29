@@ -9,38 +9,38 @@ always_comb begin
     {FORWARD_A, FORWARD_B} = 4'b0000;
     if (
         REGWRITE_EX_MEM
-        && (ARD_EX_MEM != 0)
+        && (ARD_EX_MEM != 5'b00000)
         && (ARD_EX_MEM == ARS1)
     ) 
     begin
         FORWARD_A = 2'b10;
     end  
     
-    else if (
+    if (
         REGWRITE_EX_MEM
-        && (ARD_EX_MEM != 0)
+        && (ARD_EX_MEM != 5'b00000)
         && (ARD_EX_MEM  == ARS2)
     ) 
     begin
         FORWARD_B = 2'b10;
     end
     
-    else if (
+    if (
         REGWRITE_MEM_WB
-        && (ARD_MEM_WB != 0)
-        && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
-        && (ARD_EX_MEM == ARS1)
+        && (ARD_MEM_WB != 5'b00000)
+        && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 5'b00000)
+            && (ARD_EX_MEM == ARS1))
         && (ARD_MEM_WB == ARS1)
     ) 
     begin
         FORWARD_A = 2'b01;
     end
     
-    else if (
+    if (
         REGWRITE_MEM_WB
-        && (ARD_MEM_WB != 0)
-        && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 0))
-        && (ARD_EX_MEM == ARS2)
+        && (ARD_MEM_WB != 5'b00000)
+        && !(REGWRITE_EX_MEM && (ARD_EX_MEM != 5'b00000)
+            && (ARD_EX_MEM == ARS2))
         && (ARD_MEM_WB == ARS2)
     ) 
     begin
