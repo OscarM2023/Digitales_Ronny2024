@@ -22,12 +22,11 @@ mostrar_inst_mem(6);
 mostrar_regs(5);
 mostrar_data_mem(1);
 
-#5
+#2
 RST<=1'b1;
-#3
-
 $readmemh("data_initial.mem", pipeline_prueba.DATA_MEM.memory);
 $readmemb("inst_initial.mem", pipeline_prueba.INST_MEM.memory);
+
 
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
@@ -40,7 +39,7 @@ $display("----------------");
 for(integer i=0;i<100;i=i+1) begin
 #2
 $display("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
-$display("PC:",pipeline_prueba.PC.OUT);
+$display("PC:",pipeline_prueba.PC.OUT/4);
 mostrar_regs(6);
 mostrar_data_mem(6);
 

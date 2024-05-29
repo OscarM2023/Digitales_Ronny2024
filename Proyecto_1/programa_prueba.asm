@@ -1,5 +1,5 @@
 
-lw x5, 32(x0)
+lw x5, 16(x0)
 add x1, x0, x5
 add x2, x1, x5
 add x1, x2, x1

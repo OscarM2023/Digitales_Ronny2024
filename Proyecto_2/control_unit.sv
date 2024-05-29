@@ -10,6 +10,9 @@ localparam [6:0] arit_op = 7'b0110011;
 localparam [6:0] sw_op = 7'b0100011;
 localparam [6:0] lw_op = 7'b0000011;
 
+reg [3:0] funct7_funct3;
+assign funct7_funct3 = {INSTRUCTION[30], INSTRUCTION[14:12]};
+
 always @(*) begin
     MEMTOREAD = 1'b0;
     case (INSTRUCTION[6:0])
@@ -27,7 +30,7 @@ always @(*) begin
             MEMTOREAD = 1'b1;
         end
         arit_op: begin
-        case (INSTRUCTION[10:7])
+        case (funct7_funct3)
             4'b1000: begin //resta
                 {PCSRC,MEMTOREG,MEMWRITE,ALUSRC,REGWRITE}=5'b00001;
                  ALUOP=4'b0110;

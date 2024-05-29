@@ -381,8 +381,8 @@ pipe_mem_wb PIPE_MEM_WB(
 
 mux21 MEM_TO_REG_MUX(
     .SEL(mem_wb_memtoreg_to_data_mem_skip_mux),
-    .IN0(data_read_to_data_mem_skip_mux),
-    .IN1(result_op_to_data_mem_skip_mux),
+    .IN1(data_read_to_data_mem_skip_mux),
+    .IN0(result_op_to_data_mem_skip_mux),
     .OUT(data_mem_skip_mux_out_to_registers)
 );
 
