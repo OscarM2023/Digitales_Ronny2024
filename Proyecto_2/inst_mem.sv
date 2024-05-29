@@ -13,13 +13,13 @@ module inst_mem #(parameter width=32,depth=2048,adr_in=11)
     
  reg [width-1:0] memory [depth-1:0]; 
 integer i;
-always_ff @(posedge clk) begin
+/*always_ff @(posedge clk) begin
     if(!rst) begin  
     for(i=0;i<depth;i=i+1) begin
         memory[i]<={width-1{1'b0}};
     end
     end
-end
+end*/
 
 always @(*) instruction= memory[read_adr];
 
