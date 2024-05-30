@@ -6,14 +6,14 @@ module pipe_ex_mem_tb (
 
     parameter WIDTH = 32;
 
-    reg clk, rst,
-    reg MEMWRITE_IN, MEMTOREG_IN, REGWRITE_IN,
-    reg [WIDTH-1:0] RESULTOP_IN, WRDATA_IN,
-    reg [4:0] ARD_IN,
+    reg clk, rst;
+    reg MEMWRITE_IN, MEMTOREG_IN, REGWRITE_IN;
+    reg [WIDTH-1:0] RESULTOP_IN, WRDATA_IN;
+    reg [4:0] ARD_IN;
 
-    wire MEMWRITE_OUT, MEMTOREG_OUT, REGWRITE_OUT,
-    wire [WIDTH-1:0] RESULTOP_OUT, WRDATA_OUT,
-    wire [4:0] ARD_OUT
+    wire MEMWRITE_OUT, MEMTOREG_OUT, REGWRITE_OUT;
+    wire [WIDTH-1:0] RESULTOP_OUT, WRDATA_OUT;
+    wire [4:0] ARD_OUT;
 
 
 pipe_ex_mem dut (

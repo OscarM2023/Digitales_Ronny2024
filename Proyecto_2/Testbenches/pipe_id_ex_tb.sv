@@ -7,7 +7,7 @@ module pipe_id_ex_tb (
     parameter WIDTH = 32; 
    
     reg clk, rst;
-    reg [3:0] ALUOP_IN,
+    reg [3:0] ALUOP_IN;
     reg ALUSRC_IN, REGWRITE_IN, MEMTOREG_IN, MEMWRITE_IN, MEMREAD_IN;
     reg [4:0] ARS1_IN, ARS2_IN, ARD_IN;
     reg [WIDTH-1:0] RS1_IN, RS2_IN;
