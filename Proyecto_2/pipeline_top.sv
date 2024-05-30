@@ -272,8 +272,8 @@ assign op_code = instruction[6:0];
 
 hazard_unit HAZARD_UNIT(
     .MEMREAD_ID_EX(id_ex_memtoread_to_hazards),
-    .BEQ_WRONG_PRED(register_1_equals_register_2),
-    .OP_CODE(op_code),
+    //.BEQ_WRONG_PRED(register_1_equals_register_2),
+    //.OP_CODE(op_code),
     .ARS1_IF_ID(add_reg_1),
     .ARS2_IF_ID(add_reg_2),
     .ARD_ID_EX(id_ex_a_rd_to_ex_mem),

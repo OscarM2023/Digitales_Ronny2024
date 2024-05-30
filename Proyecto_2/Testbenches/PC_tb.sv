@@ -17,7 +17,7 @@ pc dut (
 );
 
 initial begin
-    clkTB = 0;
+    clkTB = 1;
     rstTB = 1;  
     STALLER = 0;
     IN0 = 32'hFFFFFFFF;

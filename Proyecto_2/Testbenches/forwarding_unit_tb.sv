@@ -32,15 +32,6 @@ initial begin
     $dumpfile("forwarding_unit_tb.vcd");
     $dumpvars(0,forwarding_unit_tb);
 
-    /*// Inicialización
-    ard_ex_mem = 5'b00000;
-    ard_mem_wb = 5'b00000;
-    ars1 = 5'b00000;
-    ars2 = 5'b00000;
-    regwrite_ex_mem = 1'b0;
-    regwrite_mem_wb = 1'b0;
-    #10;*/
-
 
     //if 1 causa reenvio del registro 1 de ex mem si registro destino ard_ex_mem coincide con registro fuente ars1
     // Caso 1: No hay reenvío
