@@ -7,7 +7,7 @@ module and1_tb (
     wire Q;
     
     
-and1 and_tb(
+and1 and1_tb(
     .A(A),
     .B(B),
     .Q(Q)
