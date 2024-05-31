@@ -11,9 +11,9 @@ localparam [6:0] sw_op = 7'b0100011;
 localparam [6:0] lw_op = 7'b0000011;
 
 reg [3:0] funct7_funct3;
-assign funct7_funct3 = {INSTRUCTION[30], INSTRUCTION[14:12]};
 
 always @(*) begin
+    funct7_funct3 = {INSTRUCTION[30], INSTRUCTION[14:12]};
     MEMTOREAD = 1'b0;
     case (INSTRUCTION[6:0])
         beq_op: begin
