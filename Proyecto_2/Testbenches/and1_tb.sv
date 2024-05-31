@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-`include "and.sv"
+`include "and1.sv"
 
 module and_tb (
 );
