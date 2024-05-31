@@ -1,7 +1,7 @@
 `timescale 1ns/1ns
 `include "and1.sv"
 
-module and_tb (
+module and1_tb (
 );
     reg A, B;
     wire Q;
@@ -15,8 +15,8 @@ and1 and_tb(
 
 
 initial begin
-    $dumpfile("and_tb.vcd");
-    $dumpvars(0,and_tb);
+    $dumpfile("and1_tb.vcd");
+    $dumpvars(0,and1_tb);
 
     A = 0;
     B = 0;
