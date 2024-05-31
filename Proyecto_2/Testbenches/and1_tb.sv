@@ -39,7 +39,7 @@ initial begin
     #10
 
     $display("Test completado");
-
+    $finish;
 
 end
 
