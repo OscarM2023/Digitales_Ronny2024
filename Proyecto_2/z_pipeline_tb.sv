@@ -2,9 +2,9 @@
 `include "pipeline_top.sv"
 module z_pipeline_tb;
 
-  reg  RST,CLK;
+  reg  RST,CLK,enable;
 
- pipeline_top pipeline_prueba (.rst(RST),.clk(CLK));
+ pipeline_top pipeline_prueba(.rst(RST), .clk_in(CLK), .enable(enable));
 
  initial forever #1 CLK=~CLK;
 
@@ -17,6 +17,7 @@ $dumpvars(0,z_pipeline_tb);
 
 CLK=1'b0; //Inicializar el clock en bajo
 RST<=1'b0;
+enable <=0;
 $display("PC:",pipeline_prueba.PC.OUT);
 mostrar_inst_mem(6);
 mostrar_regs(5);
@@ -24,8 +25,19 @@ mostrar_data_mem(1);
 
 #2
 RST<=1'b1;
+/*
 $readmemh("data_initial", pipeline_prueba.DATA_MEM.memory);
 $readmemb("inst_initial", pipeline_prueba.INST_MEM.memory);
+*/
+
+#0 $readmemb("data_initial", pipeline_prueba.DATA_MEM.sub1.RAM_matrix);
+$display("\n%t: INFO: %m: loading inst_mem %s\n", $realtime, RAM_init_file);
+
+#0 $readmemb("inst_initial", pipeline_prueba.INST_MEM.sub1.RAM_matrix);
+$display("\n%t: INFO: %m: loading data_mem %s\n", $realtime, RAM_init_file);
+
+#210;
+@(negedge clk) enable = 1'b1;
 
 
 $display("\nACTIVACION DE RESET\n");

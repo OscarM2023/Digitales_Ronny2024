@@ -24,7 +24,8 @@ module pipeline_top #(
     parameter WIDTH = 32
 )(
     input wire rst,
-    input wire clk
+    input wire clk_in,
+    input wire enable
 );
 
 wire [WIDTH-1:0] pc_mux_to_pc;
@@ -119,7 +120,10 @@ wire [WIDTH-1:0] result_op_to_data_mem_skip_mux;
 wire [4:0] mem_wb_a_rd_to_registers;
 wire [WIDTH-1:0] data_mem_skip_mux_out_to_registers;
 
-
+always_comb begin
+    if(enable) clk = clk_in; 
+    else clk = 1'b0;
+end
 
 mux21 PC_MUX(
     .SEL(and_branch_was_taken),
@@ -139,22 +143,25 @@ pc PC(
 reg [10:0] by_byte_addressing_to_by_word;
 assign by_byte_addressing_to_by_word = pc_to_inst_mem[12:2];
 
+
+/*
 inst_mem INST_MEM(
     .clk(clk),
     .rst(rst),
     .read_adr(by_byte_addressing_to_by_word),
     .instruction(inst_mem_to_inst_pipe)
 );
+*/
 
-/*
+
 XSPRAMLP_2048X32_M8P INST_MEM(
     .CLK(clk),
-    .A(pc_to_inst_mem[10:0]),
+    .A(by_byte_addressing_to_by_word),
     .Q(inst_mem_to_inst_pipe),
     .WEn(1'b1)//Es activo en bajo
 
 );
-*/
+
 
 adder PC_ADDER(
     .A(pc_to_inst_mem),
@@ -355,6 +362,7 @@ data_mem DATA_MEM(
 XSPRAMLP_2048X32_M8P DATA_MEM(
     .CLK(clk),
     .CEn(1'b1),
+    .Z
     .A(ex_mem_result_op_to_data_mem[10:0]),
     .D(ex_mem_wr_data_to_data_mem),
     .WEn(~ex_mem_memwrite_to_data_mem),//Es activo en bajo
