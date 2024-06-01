@@ -3,255 +3,34 @@ debImport "-i" "-simflow" "-dbdir" "./simv.daidir"
 srcTBInvokeSim
 wvCreateWindow
 srcHBSelect "z_pipeline_tb.pipeline_prueba.INST_MEM" -win $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba.INST_MEM" -win $_nTrace1
 srcSetScope "z_pipeline_tb.pipeline_prueba.INST_MEM" -delim "." -win $_nTrace1
 srcHBSelect "z_pipeline_tb.pipeline_prueba.INST_MEM" -win $_nTrace1
-srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.read_adr\[10:0\]"
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/INST_MEM/read_adr\[10:0\]"
+srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.A\[10:0\]"
+wvAddSignal -win $_nWave3 "/z_pipeline_tb/pipeline_prueba/INST_MEM/A\[10:0\]"
 wvSetPosition -win $_nWave3 {("G1" 0)}
 wvSetPosition -win $_nWave3 {("G1" 1)}
 wvSetPosition -win $_nWave3 {("G1" 1)}
-srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.instruction\[31:0\]"
+srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.CLK"
+wvSetPosition -win $_nWave3 {("G2" 0)}
 wvSetPosition -win $_nWave3 {("G1" 0)}
 wvSetPosition -win $_nWave3 {("G2" 0)}
 wvSetPosition -win $_nWave3 {("G1" 1)}
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/INST_MEM/instruction\[31:0\]"
+wvSetPosition -win $_nWave3 {("G2" 0)}
 wvSetPosition -win $_nWave3 {("G1" 1)}
+wvSetPosition -win $_nWave3 {("G1" 0)}
+wvAddSignal -win $_nWave3 "/z_pipeline_tb/pipeline_prueba/INST_MEM/CLK"
+wvSetPosition -win $_nWave3 {("G1" 0)}
+wvSetPosition -win $_nWave3 {("G1" 1)}
+srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.Q\[31:0\]"
+srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.INST_MEM.Q\[31:0\]"
+wvSetPosition -win $_nWave3 {("G1" 0)}
+wvSetPosition -win $_nWave3 {("G2" 0)}
+wvSetPosition -win $_nWave3 {("G1" 0)}
+wvSetPosition -win $_nWave3 {("G2" 0)}
 wvSetPosition -win $_nWave3 {("G1" 2)}
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-srcSetScope "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -delim "." -win \
-           $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-srcSignalViewSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX.SEL\[1:0\]"
-wvSetPosition -win $_nWave3 {("G1" 0)}
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/SEL\[1:0\]"
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvSetPosition -win $_nWave3 {("G2" 1)}
-wvSetPosition -win $_nWave3 {("G2" 1)}
-wvSelectSignal -win $_nWave3 {( "G2" 1 )} 
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G3" 0)}
-wvSetPosition -win $_nWave3 {("G2" 0)}
-srcHBDrag -win $_nTrace1
-wvSetPosition -win $_nWave3 {("G1" 0)}
+wvAddSignal -win $_nWave3 "/z_pipeline_tb/pipeline_prueba/INST_MEM/Q\[31:0\]"
 wvSetPosition -win $_nWave3 {("G1" 2)}
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvSetPosition -win $_nWave3 {("G3" 0)}
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvDumpScope "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 0)}
-wvAddSubGroup -win $_nWave3 -holdpost {FORWARD_A_MUX}
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/SEL\[1:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN0\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN1\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN2\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN3\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT\[31:0\]"
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 0)}
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 6)}
-wvScrollUp -win $_nWave3 1
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
+wvSetPosition -win $_nWave3 {("G1" 3)}
+verdiSetTimeUnit 0.1m
 srcTBRunSim
-wvZoomOut -win $_nWave3
-wvZoomOut -win $_nWave3
-wvZoomOut -win $_nWave3
-wvZoomOut -win $_nWave3
-wvZoomOut -win $_nWave3
-wvZoomOut -win $_nWave3
-wvScrollDown -win $_nWave3 1
-wvScrollDown -win $_nWave3 1
-wvScrollDown -win $_nWave3 1
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvSetCursor -win $_nWave3 21017.576318 -snap {("FORWARD_A_MUX" 1)}
-wvSetCursor -win $_nWave3 21017.576318 -snap {("FORWARD_A_MUX" 1)}
-wvSetCursor -win $_nWave3 17702.127660 -snap {("FORWARD_A_MUX" 1)}
-wvSetCursor -win $_nWave3 19774.283071 -snap {("FORWARD_A_MUX" 1)}
-wvSetCursor -win $_nWave3 20188.714154 -snap {("G2" 0)}
-wvScrollUp -win $_nWave3 3
-wvScrollDown -win $_nWave3 1
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 1
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 0
-wvScrollDown -win $_nWave3 1
-wvSetCursor -win $_nWave3 18708.603145 -snap {("FORWARD_A_MUX" 1)}
-srcActiveTrace "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX.SEL\[1:0\]" \
-           -TraceByDConWave -TraceTime 11000 -TraceValue 10 -win $_nTrace1
-wvSetCursor -win $_nWave3 21491.211841
-wvSelectSignal -win $_nWave3 {( "G2/FORWARD_A_MUX" 6 )} 
-wvSelectSignal -win $_nWave3 {( "G2/FORWARD_A_MUX" 6 )} 
-wvSelectSignal -win $_nWave3 {( "G2/FORWARD_A_MUX" 6 )} 
-wvShowOneTraceSignals -win $_nWave3 -signal \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT\[31:0\]" -driver
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           5 )} 
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           3 )} 
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           1 )} 
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 1)}
-wvExpandBus -win $_nWave3
-wvUndo -win $_nWave3
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 2)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 2)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 1)}
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-srcSetScope "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -delim "." -win \
-           $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX" -win $_nTrace1
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           2 )} 
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           3 )} 
-wvSelectGroup -win $_nWave3 \
-           {G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver}
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" \
-           1 )} 
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 1)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 0)}
-srcHBDrag -win $_nTrace1
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 4)}
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 5)}
-wvSetPosition -win $_nWave3 {("G2/FORWARD_A_MUX" 6)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 0)}
-wvDumpScope "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver" 0)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" 0)}
-wvAddSubGroup -win $_nWave3 -holdpost {FORWARD_A_MUX}
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/SEL\[1:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN0\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN1\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN2\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN3\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT\[31:0\]"
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" 0)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" 6)}
-wvSelectGroup -win $_nWave3 \
-           {G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX}
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" \
-           4 )} 
-wvSelectSignal -win $_nWave3 \
-           {( "G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" \
-           6 )} 
-wvSetCursor -win $_nWave3 26049.953747 -snap {("FORWARD_A_MUX" 6)}
-wvSelectGroup -win $_nWave3 \
-           {G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver}
-wvSelectAll -win $_nWave3
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" 0)}
-wvSelectGroup -win $_nWave3 \
-           {G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX}
-wvSelectGroup -win $_nWave3 {G1}
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G3" 0)}
-wvSetPosition -win $_nWave3 \
-           {("G2/FORWARD_A_MUX//z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT@1000(1ns)#ActiveDriver/FORWARD_A_MUX" 0)}
-wvSelectGroup -win $_nWave3 {G2}
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G3" 0)}
-wvSelectGroup -win $_nWave3 {G3}
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G1" 0)}
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G1" 0)}
-wvSelectGroup -win $_nWave3 {G1}
-wvCut -win $_nWave3
-wvSetPosition -win $_nWave3 {("G1" 0)}
-srcHBDrag -win $_nTrace1
-wvDumpScope "z_pipeline_tb.pipeline_prueba.FORWARD_A_MUX"
-wvRenameGroup -win $_nWave3 {G1} {FORWARD_A_MUX}
-wvAddSignal -win $_nWave3 \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/SEL\[1:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN0\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN1\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN2\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/IN3\[31:0\]" \
-           "/z_pipeline_tb/pipeline_prueba/FORWARD_A_MUX/OUT\[31:0\]"
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 0)}
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 6)}
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 6)}
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 4 )} 
-wvSetCursor -win $_nWave3 18294.172063 -snap {("FORWARD_A_MUX" 6)}
-srcDeselectAll -win $_nTrace1
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 1 )} 
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 1 )} 
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvExpandBus -win $_nWave3
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 8)}
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 1 )} 
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvCollapseBus -win $_nWave3
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 6)}
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 1 )} 
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvExpandBus -win $_nWave3
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 8)}
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 1 )} 
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvCollapseBus -win $_nWave3
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 1)}
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 6)}
-wvSelectSignal -win $_nWave3 {( "FORWARD_A_MUX" 6 )} 
-wvExpandBus -win $_nWave3
-wvUndo -win $_nWave3
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 7)}
-wvSetPosition -win $_nWave3 {("G2" 0)}
-wvSetPosition -win $_nWave3 {("FORWARD_A_MUX" 6)}
-srcHBSelect "z_pipeline_tb.pipeline_prueba" -win $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba" -win $_nTrace1
-srcSetScope "z_pipeline_tb.pipeline_prueba" -delim "." -win $_nTrace1
-srcHBSelect "z_pipeline_tb.pipeline_prueba" -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "forward_a_mux_to_alu_a_in" -line 290 -pos 1 -win $_nTrace1
-srcAction -pos 289 4 19 -win $_nTrace1 -name "forward_a_mux_to_alu_a_in" -ctrlKey \
-          off
-srcDeselectAll -win $_nTrace1
-nsMsgSwitchTab -tab general
 debExit

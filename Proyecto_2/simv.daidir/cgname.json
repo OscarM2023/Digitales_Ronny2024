@@ -5,6 +5,12 @@
         "module",
         1
     ],
+    "XSPRAMLP_2048X32_M8P": [
+        "XSPRAMLP_2048X32_M8P",
+        "h2ru6",
+        "module",
+        19
+    ],
     "z_pipeline_tb": [
         "z_pipeline_tb",
         "fxt3U",
@@ -16,5 +22,11 @@
         "amcQw",
         "module",
         15
+    ],
+    "XSPRAMLP_2048X32_M8P_DFF": [
+        "XSPRAMLP_2048X32_M8P_DFF",
+        "Dagb4",
+        "udp",
+        18
     ]
 }

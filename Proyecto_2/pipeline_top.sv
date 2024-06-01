@@ -17,6 +17,7 @@
 `include "signextend.sv"
 `include "data_mem.sv"
 `include "inst_mem.sv"
+`include "XSPRAMLP_2048X32_M8P.sv"
 
 
 
@@ -24,8 +25,7 @@ module pipeline_top #(
     parameter WIDTH = 32
 )(
     input wire rst,
-    input wire clk_in,
-    input wire enable
+    input wire clk
 );
 
 wire [WIDTH-1:0] pc_mux_to_pc;
@@ -120,11 +120,6 @@ wire [WIDTH-1:0] result_op_to_data_mem_skip_mux;
 wire [4:0] mem_wb_a_rd_to_registers;
 wire [WIDTH-1:0] data_mem_skip_mux_out_to_registers;
 
-always_comb begin
-    if(enable) clk = clk_in; 
-    else clk = 1'b0;
-end
-
 mux21 PC_MUX(
     .SEL(and_branch_was_taken),
     .IN0(pc_adder_to_pc_mux),
@@ -144,24 +139,22 @@ reg [10:0] by_byte_addressing_to_by_word;
 assign by_byte_addressing_to_by_word = pc_to_inst_mem[12:2];
 
 
-/*
 inst_mem INST_MEM(
     .clk(clk),
     .rst(rst),
     .read_adr(by_byte_addressing_to_by_word),
     .instruction(inst_mem_to_inst_pipe)
 );
-*/
 
-
+/*
 XSPRAMLP_2048X32_M8P INST_MEM(
-    .CLK(clk),
-    .A(by_byte_addressing_to_by_word),
+    .CLK(clk_in),
+    .A(pc_to_inst_mem[10:0]),
     .Q(inst_mem_to_inst_pipe),
     .WEn(1'b1)//Es activo en bajo
 
 );
-
+*/
 
 adder PC_ADDER(
     .A(pc_to_inst_mem),
@@ -349,6 +342,7 @@ forwarding_unit FORWARDING_UNIT(
     .FORWARD_B(forwarding_forward_b_sel_signal)
 );
 
+
 data_mem DATA_MEM(
     .clk(clk),
     .rst(rst),
@@ -360,16 +354,14 @@ data_mem DATA_MEM(
 
 /*
 XSPRAMLP_2048X32_M8P DATA_MEM(
-    .CLK(clk),
+    .CLK(clk_in),
     .CEn(1'b1),
-    .Z
     .A(ex_mem_result_op_to_data_mem[10:0]),
     .D(ex_mem_wr_data_to_data_mem),
     .WEn(~ex_mem_memwrite_to_data_mem),//Es activo en bajo
     .Q(data_mem_out_to_mem_wb)
 
-);
-*/
+);*/
 
 pipe_mem_wb PIPE_MEM_WB(
     .clk(clk),

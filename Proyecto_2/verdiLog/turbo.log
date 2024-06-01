@@ -1,2 +1,3 @@
 Command Line: /mnt/vol_NFS_rh003/tools/verdi/R-2020.12-SP2/platform/LINUXAMD64/bin/Novas -i -simflow -simBin ./simv -simOpt  
 uname(Linux redhatclon 4.18.0-513.24.1.el8_9.x86_64 #1 SMP Thu Mar 14 14:20:09 EDT 2024 x86_64)
+au time 15.094720 6.840386 0.776918 delta 241926144 241926144 total 730570752 730570752

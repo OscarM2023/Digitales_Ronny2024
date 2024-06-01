@@ -4,7 +4,7 @@ module z_pipeline_tb;
 
   reg  RST,CLK,enable;
 
- pipeline_top pipeline_prueba(.rst(RST), .clk_in(CLK), .enable(enable));
+ pipeline_top pipeline_prueba(.rst(RST), .clk(CLK));
 
  initial forever #1 CLK=~CLK;
 
@@ -25,20 +25,15 @@ mostrar_data_mem(1);
 
 #2
 RST<=1'b1;
-/*
+
+
 $readmemh("data_initial", pipeline_prueba.DATA_MEM.memory);
 $readmemb("inst_initial", pipeline_prueba.INST_MEM.memory);
-*/
 
+/*
 #0 $readmemb("data_initial", pipeline_prueba.DATA_MEM.sub1.RAM_matrix);
-$display("\n%t: INFO: %m: loading inst_mem %s\n", $realtime, RAM_init_file);
-
 #0 $readmemb("inst_initial", pipeline_prueba.INST_MEM.sub1.RAM_matrix);
-$display("\n%t: INFO: %m: loading data_mem %s\n", $realtime, RAM_init_file);
-
-#210;
-@(negedge clk) enable = 1'b1;
-
+*/
 
 $display("\nACTIVACION DE RESET\n");
 $display("----------------");
@@ -72,11 +67,10 @@ task automatic mostrar_regs(input integer b); //funcion para mostrar "b" registr
   end
 endtask 
 
-
 task automatic mostrar_data_mem(input integer b); //funcion para mostrar "b" direcciones de mem data
   for(integer a=0;a<(2**b)+1;a=a+8) begin
-  $display("Data_Mem[%d]:(h)|%h|(d)|%d|",a,{pipeline_prueba.DATA_MEM.memory[a+7],pipeline_prueba.DATA_MEM.memory[a+6],pipeline_prueba.DATA_MEM.memory[a+5],pipeline_prueba.DATA_MEM.memory[a+4],pipeline_prueba.DATA_MEM.memory[a+3],pipeline_prueba.DATA_MEM.memory[a+2],pipeline_prueba.DATA_MEM.memory[a+1],pipeline_prueba.DATA_MEM.memory[a]}
-  ,{pipeline_prueba.DATA_MEM.memory[a+7],pipeline_prueba.DATA_MEM.memory[a+6],pipeline_prueba.DATA_MEM.memory[a+5],pipeline_prueba.DATA_MEM.memory[a+4],pipeline_prueba.DATA_MEM.memory[a+3],pipeline_prueba.DATA_MEM.memory[a+2],pipeline_prueba.DATA_MEM.memory[a+1],pipeline_prueba.DATA_MEM.memory[a]});
+  $display("Data_Mem[%d]:(h)|%h|(d)|%d|",a,{pipeline_prueba.DATA_MEM.memory[a+3],pipeline_prueba.DATA_MEM.memory[a+2],pipeline_prueba.DATA_MEM.memory[a+1],pipeline_prueba.DATA_MEM.memory[a]}
+  ,{pipeline_prueba.DATA_MEM.memory[a+3],pipeline_prueba.DATA_MEM.memory[a+2],pipeline_prueba.DATA_MEM.memory[a+1],pipeline_prueba.DATA_MEM.memory[a]});
   end
 endtask 
 

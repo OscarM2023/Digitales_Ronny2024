@@ -1,0 +1,16 @@
+#######################################################################################
+# fsdb.xxxxx.log : log primitive debug message of FSDB Reader
+# This is for R&D to analyze when there are issues happening when FSDB reading
+# The corresponding FSDB file is /mnt/vol_NFS_rh003/Est_Digitales_I_2024/BONILLA_BLANCO_I_2024_dig/Digitales_Ronny2024/Proyecto_2/inter.fsdb
+#######################################################################################
+[BASIC]Reader version : Chronologic Simulation VCS Release R-2020.12-SP2_Full64
+[BASIC]simulator version : Chronologic Simulation VCS Release R-2020.12-SP2_Full64
+[BASIC]dumper version : FSDB Dumper for VCS, Release Verdi_R-2020.12-SP2, Linux x86_64/64bit, 05/23/2021
+[READSCOPE]ReadScopeTree calling time is 4
+[READSCOPE]ReadScope_PartialLoad calling time is 0
+[READSCOPE]Scope read by partial load count is 0
+[READSCOPE]Scope read count is 132
+[READSCOPE]Decompressed blk is 34
+[FSDBGate Info] start
+[FSDBGate Info] Total fhdb_compute_count = 0
+[FSDBGate Info] end
